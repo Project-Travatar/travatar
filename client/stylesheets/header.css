@@ -1,7 +1,17 @@
 .header-container {
-    text-decoration: underline;
+    text-decoration: none;
     text-decoration-color: white;
     color: white;
     column-count: 3;
     background: black;
+    font-family: 'Libre Franklin';
+    flex-direction: column;
+}
+
+.logo {
+  justify-content: flex-start;
+}
+
+.headerItems {
+    flex-direction: row;
 }
