@@ -84,6 +84,15 @@ const tripController = {
         console.error("saveTrip ERROR =>", err);
       })
   },
+  updateTrip(req, res, next) {
+    const itineraryId = req.body.itineraryId;
+    const {tripName, destination, startDate, endDate, trip} = req.body;
+    Itinerary.findOneAndUpdate({_id:itineraryId},{
+      tripName, destination, startDate, endDate, trip
+    })
+    .then(result => console.log('result after updating itinirary: ', result))
+    .catch(err => console.log('error occured while trying to update itinirary.'))
+  },
   
   // deleteTrip - To delete the itinerary from the database based on the ObjectId
   deleteTrip(req, res, next) {
