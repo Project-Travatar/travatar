@@ -1,0 +1,7 @@
+.header-container {
+    text-decoration: underline;
+    text-decoration-color: white;
+    color: white;
+    column-count: 3;
+    background: black;
+}

@@ -1,0 +1,30 @@
+  #landing {
+    width: 100vw;
+    height: 100vh;
+    background-image: url('../assets/background.jpg');
+    background-size: cover;
+  }
+
+  #slogan {
+    position: relative;
+    left: 1.5vw;
+    top: 0.5vh;
+    font-size: 75px;
+    font-family: cursive, Times, serif;
+    font-style: italic;
+    font-weight: 800;
+    color: white;
+    inline-size: 50vw;
+  }
+
+  #start {
+    position: relative;
+    left: 18.5vw;
+    bottom: 7vh;
+    display: inline-block;
+    background: white;
+    border-radius: 4px;
+    color: white;
+    padding: 8px 12px;
+    text-decoration: none;
+  }
