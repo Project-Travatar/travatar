@@ -90,8 +90,14 @@ const tripController = {
     Itinerary.findOneAndUpdate({_id:itineraryId},{
       tripName, destination, startDate, endDate, trip
     })
-    .then(result => console.log('result after updating itinirary: ', result))
-    .catch(err => console.log('error occured while trying to update itinirary.'))
+    .then(result => {
+      console.log('result after updating itinirary: ', result);
+      return next();
+    })
+    .catch(err => {
+      console.log('error occured while trying to update itinirary.');
+      res.status(500).json({message: 'error updating itinirary.'})
+    })
   },
   
   // deleteTrip - To delete the itinerary from the database based on the ObjectId
@@ -130,5 +136,9 @@ const tripController = {
       })
   },
 }
+//return line 139 to blank
+Itinerary.find({})
+.then(data => console.log('All the itiniraries: ', data))
+.catch(err => console.log('Error occured while retrieving itiniraries.'));
 
 module.exports = tripController;

@@ -10,6 +10,11 @@ router.post('/build', (req, res, next)=>{
   res.status(201).send(res.locals.itinerary);
 });
 
+router.post('/update', authController.protect, tripController.updateTrip, (req, res) => {
+  res.status(200).send({message: 'itinirary updated.'});
+});
+
+
 router.get('/retrieve', authController.protect, tripController.retrieveAll, (req, res) => {
   // console.log(res.locals.allTrips[0]._id);
   res.status(200).json(res.locals.allTrips);

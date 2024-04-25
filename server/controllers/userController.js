@@ -84,5 +84,9 @@ const getUser = async (req, res) => {
 const generateToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET, {expiresIn: '30d'})
 }
+//return line 87 to blank
+User.find({})
+.then(data => console.log('All the users: ', data))
+.catch(err => console.log('Error occured while retrieving users.'));
 
 module.exports = { registerUser, loginUser, getUser };
