@@ -1,15 +1,15 @@
 .header-container {
-    background: black;
-    font-family: 'Raleway';
-    font-weight: 800;
-    text-decoration: none;
-    text-decoration-color: white;
-    color: white;
-    column-count: 3;
-    padding: 5px;
-    align-items: center;
-    justify-content: space-between;
-    
+  background: black;
+  font-family: 'Raleway';
+  font-weight: 800;
+  text-decoration: none;
+  text-decoration-color: white;
+  color: white;
+  column-count: 3;
+  padding: 5px;
+  align-items: center;
+  justify-content: space-between;
+
 }
 
 .logo {

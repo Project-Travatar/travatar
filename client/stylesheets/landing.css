@@ -2,40 +2,41 @@
  @import url('https://fonts.googleapis.com/css2?family=Libre+Franklin');
 
  #landing {
-    width: 100vw;
-    height: 100vh;
-    background-image: url('../assets/background.jpg');
-    background-size: cover;
-  }
+   width: 100vw;
+   height: 100vh;
+   background-image: url('../assets/background.jpg');
+   background-size: cover;
+ }
 
-  body {
-    overflow: hidden;
-  }
+ body {
+   overflow: hidden;
+ }
 
-  .slogan {
-    font-family: 'Libre Franklin';
-    font-size: 85px;
-    font-weight: 800;
-    color: white;
-    inline-size: 50vw;
-    position: relative;
-    display: flex;
-    left: 12vw;
-    top: 14vh;
-  }
+ .slogan {
+   font-family: 'Libre Franklin';
+   font-size: 85px;
+   font-weight: 800;
+   color: white;
+   inline-size: 55vw;
+   position: relative;
+   left: 12vw;
+   top: 14vh;
+   display: flex;
+   flex-direction: column;
+   justify-content: space-around;
+   gap: 2vh;
+ }
 
-  .start {
-    font-size: 15px;
-    font-weight: 800;
-    font-family: 'Raleway';
-    text-decoration: none;
-    text-decoration-color: white;
-    background: white;
-    border-radius: 4px;
-    color: black;
-    padding: 20px 27px;
-    display: inline-block;
-    margin-top: 4vh;
-    margin-left: 42vw;
-    position: absolute;
-  }
+ .get-started {
+   font-size: 15px;
+   font-weight: 800;
+   font-family: 'Raleway';
+   text-decoration: none;
+   text-decoration-color: white;
+   background: white;
+   border-radius: 4px;
+   color: black;
+   padding: 2vh 2.3vw;
+   display: inline-block;
+   inline-size: 10vw;
+ }

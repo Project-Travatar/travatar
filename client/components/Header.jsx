@@ -9,7 +9,7 @@ const Header = () => {
       <div className="logo">
         <Link to='/' className='text-white text-3xl text-center name'>
           TRAVATAR</Link>
-          <img className="arrow" src={arrow} />
+        <img className="arrow" src={arrow} />
       </div>
       <div className="headerItems flex">
         <div className='text-right m-2'>
