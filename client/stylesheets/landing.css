@@ -1,4 +1,6 @@
+ @import url('https://fonts.googleapis.com/css2?family=Raleway');
  @import url('https://fonts.googleapis.com/css2?family=Libre+Franklin');
+
  #landing {
     width: 100vw;
     height: 100vh;
@@ -6,25 +8,30 @@
     background-size: cover;
   }
 
-  #slogan {
-    position: relative;
-    left: 1.5vw;
-    top: 0.5vh;
+  .slogan {
     font-family: 'Libre Franklin';
-    font-size: 75px;
+    font-size: 85px;
     font-weight: 800;
     color: white;
     inline-size: 50vw;
+    position: relative;
+    display: flex;
+    left: 12vw;
+    top: 14vh;
   }
 
-  #start {
-    position: relative;
-    left: 18.5vw;
-    bottom: 5.5vh;
-    display: inline-block;
+  .start {
+    font-size: 15px;
+    font-weight: 800;
+    font-family: 'Raleway';
+    text-decoration: none;
+    text-decoration-color: white;
     background: white;
     border-radius: 4px;
-    color: white;
-    padding: 8px 12px;
-    text-decoration: none;
+    color: black;
+    padding: 20px 27px;
+    display: inline-block;
+    margin-top: 4vh;
+    margin-left: 42vw;
+    position: absolute;
   }

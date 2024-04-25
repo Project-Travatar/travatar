@@ -7,8 +7,11 @@ const Main = () => {
     <div>
       <Header />
       <body id="landing">
-        <p id="slogan">Let us plan the trip of your dreams...</p>
-        <Link to='/form' id='start'>Get Started </Link>
+        <div className="slogan">
+          <p>Let us plan the trip of your dreams...</p>
+        </div>
+          <Link to='/form' className='start'>GET STARTED</Link>
+        
       </body>
       
     </div>
