@@ -8,6 +8,10 @@
     background-size: cover;
   }
 
+  body {
+    overflow: hidden;
+  }
+
   .slogan {
     font-family: 'Libre Franklin';
     font-size: 85px;
