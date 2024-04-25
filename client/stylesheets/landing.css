@@ -31,12 +31,12 @@
    font-size: 15px;
    font-weight: 800;
    font-family: 'Raleway';
+   text-align: center;
    text-decoration: none;
    text-decoration-color: white;
    background: white;
    border-radius: 4px;
    color: black;
-   padding: 2vh 2.3vw;
-   display: inline-block;
+   padding: 2vh;
    inline-size: 10vw;
  }
