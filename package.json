@@ -12,7 +12,8 @@
     "build": "vite build",
     "serve": "vite preview",
     "server": "nodemon",
-    "test": "jest", 
+    "test": "jest",
+    "vite-test": "vite-jest",
     "vitest": "vitest"
   },
   "dependencies": {
@@ -22,7 +23,6 @@
     "bcryptjs": "^2.4.3",
     "cookie-parser": "^1.4.6",
     "express": "^4.12.3",
-    "googleapis": "^135.0.0",
     "jest-environment-jsdom": "^29.7.0",
     "jsonwebtoken": "^9.0.2",
     "mongodb": "^6.5.0",
@@ -53,7 +53,6 @@
     "supertest": "^6.3.4",
     "supertest": "^6.3.4",
     "tailwindcss": "^3.4.3",
-    "vite": "^5.2.8",
-    "vitest": "^1.5.1"
+    "vite": "^5.2.8"
   }
 }
