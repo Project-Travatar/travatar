@@ -56,6 +56,9 @@ const loginUser = async (req, res) => {
       return res.status(400).json({ error: 'Invalid credentials' });
     }
 
+    // For testing the catch block for the loginUser controller
+    // throw new Error('Intentional error for testing');
+
     return res.status(200).json({
       _id: user._id,
       firstName: user.firstName,
