@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 import tripReducer from './reducers/tripReducer';
 import itineraryReducer from './reducers/itineraryReducer';
+import userReducer from './reducers/userReducer';
 
 import App from './App';
 import Manager from './components/Manager';
@@ -24,10 +25,14 @@ import ItineraryPage from './components/ItineraryPage';
 import Register from './components/Register';
 import '../styles.css';
 
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 export const store = configureStore({
   reducer: {
     trip: tripReducer,
     itinerary: itineraryReducer,
+    user: userReducer,
   }
 });
 
@@ -56,6 +61,7 @@ createRoot(root).render(
           <Route path="/itinerary" element={<ItineraryPage />} />
         </Routes>
       </Router>
+      <ToastContainer />
     </Provider>
   </React.StrictMode>
 );

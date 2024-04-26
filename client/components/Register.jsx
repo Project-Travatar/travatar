@@ -1,6 +1,9 @@
 import Header from "./Header";
 import { useNavigate } from 'react-router-dom';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { registerUser, resetUser } from '../reducers/userReducer';
+import { useDispatch, useSelector } from 'react-redux';
+import { toast } from 'react-toastify'
 
 const Register = () => {
   const [firstName, setFirstName] = useState('');
@@ -8,21 +11,36 @@ const Register = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const { user, isLoading, isError, isSuccess, message } = useSelector((state) => state.user);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const res = await fetch ('/api/users/', {
-        method: 'post',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({firstName, lastName, email, password}),
-    })
-
-    if(res.ok){
-        const user = await res.json();
-        console.log(user)
-        navigate('/login');
+    try {
+      await dispatch(registerUser({firstName, lastName, email, password}))
+    } catch (err) {
+      console.log(err);
     }
   };
+
+  // Toast error message handling for failed registration
+  useEffect(() => {
+    if (isError) {
+      toast.error(message);
+      dispatch(resetUser());
+    }
+  }, [isError]);
+
+  // Toast message handling for successful registration
+  useEffect(() => {
+    if (isSuccess) {
+      toast.success('Registration & login successful!');
+      navigate('/');
+      dispatch(resetUser());
+    }
+  }, [isSuccess]);
+
 
   return (
     <div>
