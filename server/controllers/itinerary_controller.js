@@ -77,6 +77,7 @@ const tripController = {
     })
       .then (result => {
         console.log("itinerary successfully saved in database");
+        
         return next();
       })
       .catch (err => {
@@ -84,7 +85,46 @@ const tripController = {
         console.error("saveTrip ERROR =>", err);
       })
   },
-  
+  /*
+  saveTrip(req, res, next) {
+    // const { email } = req.body;
+    Itinerary.create({
+      // email: req.body.email,
+      user: req.user._id,
+      tripName: res.locals.tripName,
+      destination: req.body.destination,
+      startDate: req.body.startDate,
+      endDate: req.body.endDate,
+      trip: JSON.stringify(res.locals.itinerary),
+    })
+    .then (savedItinerary => {
+        console.log("itinerary successfully saved in database");
+        //return the whole document that was created to the front end
+        res.locals.itinerary = savedItinerary;
+        return next();
+      })
+      .catch (err => {
+        console.log("could not add itinerary to database - saveTrip middleware");
+        console.error("saveTrip ERROR =>", err);
+      })
+  },
+  */
+  updateTrip(req, res, next) {
+    //const itineraryId = req.body.itineraryId;
+    const {tripName, destination, startDate, endDate, trip, user} = req.body;
+    Itinerary.findOneAndUpdate({user:user},{
+      tripName, destination, startDate, endDate, trip
+    })
+    .then(result => {
+      console.log('result after updating itinerary: ', result);
+      return next();
+    })
+    .catch(err => {
+      console.log('error occured while trying to update itinerary.');
+      res.status(500).json({message: 'error updating itinerary.'})
+    })
+  },
+
   // deleteTrip - To delete the itinerary from the database based on the ObjectId
   deleteTrip(req, res, next) {
     console.log(req.body);

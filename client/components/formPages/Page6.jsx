@@ -19,7 +19,7 @@ const Page6 = () => {
   const handleDescriptionChange = e => {
     const { value, checked } = e.target;
     if (checked) {
-      dispatch(updateGroupDescription(value));
+      dispatch(updateItinerary(value));
     }
   };
 
