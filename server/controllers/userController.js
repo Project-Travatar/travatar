@@ -78,7 +78,8 @@ const getUser = async (req, res) => {
     res.status(500).json({ error: 'Internal server error'});
   }
   
-}
+};
+
 
 // generate json web token
 const generateToken = (id) => {
