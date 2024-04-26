@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+/*
 .header-container {
     text-decoration: underline;
     text-decoration-color: blue;
@@ -11,7 +12,7 @@
     border-radius: 10px;
     border-width: 4px;
     border-color: rgb(4, 153, 153);
-}
+} */
 
 .activities{
     column-count:3;
