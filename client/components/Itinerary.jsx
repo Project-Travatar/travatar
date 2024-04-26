@@ -1,5 +1,7 @@
+import Reroll from './Reroll.jsx';
+import { useState } from 'react';
+
 const Itinerary = ({ itinerary }) => {
-  // console.log("Itinerary Component:", itinerary.itinerary.itinerary);
   if (itinerary) return (
     <div id='itinerary-details'>
       {Object.entries(itinerary.itinerary).map(([date, timesOfDay]) => (
@@ -9,6 +11,7 @@ const Itinerary = ({ itinerary }) => {
             {Object.entries(timesOfDay).map(([timeOfDay, suggestion]) => (
               <div className='activity-details' key={timeOfDay}>
                 <h3 className="time-of-day">{timeOfDay}</h3>
+                <Reroll timeOfDay={timeOfDay} date={date} itinerary={itinerary.itin}/>
                 <p>Activity: {suggestion.activity}</p>
                 <p>Description: {suggestion.description}</p>
                 <p>Address: {suggestion.address}</p>
