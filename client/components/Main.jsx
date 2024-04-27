@@ -25,23 +25,6 @@ const Main = () => {
     })();
    
   }, []);
-  const dispatch = useDispatch();
-  useEffect(() => {
-    console.log('Main useEffect');
-    (async () => {
-      const response = await fetch('/api/users/verifyCookie')
-      if(!response.ok) {
-        console.log('No user logged in');
-      }
-      else {
-        const userData = await response.json();
-        console.log('userData', userData);
-        dispatch(loginUserSync(userData));
-      }
-
-    })();
-   
-  }, []);
   
   return (
     <div>
