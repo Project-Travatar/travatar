@@ -1,4 +1,3 @@
-import Header from "./Header";
 import { useNavigate } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import { registerUser, resetUser } from '../reducers/userReducer';
@@ -45,7 +44,6 @@ const Register = () => {
 
   return (
     <div className='login-registration-page'>
-      <Header />
       <div className="flex flex-col justify-center items-center">
       <div className="login-registration-form w-3/5 border border-transparent rounded-lg pt-4 mt-20 mb-5 p-10">
       <h2 className="text-center font-bold text-white text-4xl mt-10">Register</h2>
