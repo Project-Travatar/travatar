@@ -5,11 +5,15 @@ import '../stylesheets/landing.css';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { loginUserSync } from '../reducers/userReducer';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { loginUserSync } from '../reducers/userReducer';
 
 const Main = () => {
   const { user } = useSelector((state) => state.user);
   const dispatch = useDispatch();
   useEffect(() => {
+    console.log('Main useEffect');
     (async () => {
       const response = await fetch('/api/users/verifyCookie')
       if(!response.ok) {
