@@ -1,0 +1,35 @@
+.header-container {
+  background: black;
+  font-family: 'Raleway';
+  font-weight: 800;
+  text-decoration: none;
+  text-decoration-color: white;
+  color: white;
+  column-count: 3;
+  padding: 5px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-weight: 2000;
+  display: flex;
+  margin-left: 7.5px;
+  align-items: center;
+}
+
+.arrow {
+  width: 40px;
+  height: 35px;
+  margin-bottom: 4.5px;
+}
+
+.headerItems {
+  margin-right: 12.5px;
+  justify-content: space-around;
+  gap: 12.5px;
+}
+
+.name {
+  font-weight: 700;
+}
