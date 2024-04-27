@@ -8,7 +8,7 @@ const Main = () => {
   
   return (
     <div>
-      <body id="landing">
+      <div id="landing">
         <div className="landing-content">
           <div className="slogan">
             {user ? (
@@ -21,7 +21,7 @@ const Main = () => {
           </div>
         </div>
 
-      </body>
+      </div>
 
     </div>
   );

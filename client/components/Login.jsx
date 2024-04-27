@@ -39,7 +39,7 @@ const Login = () => {
     }, [isSuccess]);
 
   return (
-    <div className='login-registration-page'>
+    <div className='login-registration-page' style={{height: '94vh'}}>
       <div className="flex flex-col justify-center items-center">
         <div className="login-registration-form w-3/5 border border-transparent rounded-lg pt-4 mt-20 mb-5 p-10">
           <h2 className="text-center font-bold text-white text-4xl mt-10">Login</h2>
