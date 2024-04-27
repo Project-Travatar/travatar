@@ -11,14 +11,20 @@
     "dev": "vite & nodemon ./server/server.js",
     "build": "vite build",
     "serve": "vite preview",
-    "server": "nodemon"
+    "server": "nodemon",
+    "test": "jest",
+    "vite-test": "vite-jest",
+    "vitest": "vitest"
   },
   "dependencies": {
     "@react-spring/web": "^9.7.3",
     "@reduxjs/toolkit": "^2.2.2",
     "autoprefixer": "^10.4.19",
     "bcryptjs": "^2.4.3",
+    "cookie-parser": "^1.4.6",
     "express": "^4.12.3",
+    "googleapis": "^135.0.0",
+    "jest-environment-jsdom": "^29.7.0",
     "jsonwebtoken": "^9.0.2",
     "mongodb": "^6.5.0",
     "mongoose": "^8.3.1",
@@ -32,11 +38,16 @@
     "redux": "^4.0.5"
   },
   "devDependencies": {
+    "@testing-library/react": "^15.0.4",
+    "@types/react-dom": "^18.2.25",
     "@vitejs/plugin-react": "^4.2.1",
     "dotenv": "^16.4.5",
+    "jest": "^29.7.0",
+    "node-mocks-http": "^1.14.1",
     "nodemon": "^2.0.7",
     "postcss": "^8.4.38",
     "sass": "^1.72.0",
+    "supertest": "^6.3.4",
     "tailwindcss": "^3.4.3",
     "vite": "^5.2.8"
   }
