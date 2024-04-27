@@ -53,6 +53,12 @@
     margin: 5px;
 }
 
+.next-button {
+    color: black;
+    border-radius: 4px;
+    background: gray;
+}
+
 .typed-input {
     background-color: white;
     width: 100%;

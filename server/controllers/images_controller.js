@@ -1,1 +1,0 @@
-//Controller to call the Google API for images on destinations for the itinerary

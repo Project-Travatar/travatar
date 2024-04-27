@@ -9,6 +9,7 @@ import userReducer from './reducers/userReducer';
 import App from './App';
 import Manager from './components/Manager';
 import Main from './components/Main';
+import Header from './components/Header';
 import About from './components/About';
 import Login from './components/Login';
 import Form from './components/Form';
@@ -38,6 +39,7 @@ createRoot(root).render(
   <React.StrictMode>
     <Provider store={store}>
       <Router>
+        <Header />
         <Routes>
           <Route path="/" element={<App />}>
             <Route index element={<Main />} />

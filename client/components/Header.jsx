@@ -12,13 +12,16 @@ const Header = () => {
   return (
     <div className="header-container flex">
       <div className="logo">
-        <Link to='/' className='text-white text-3xl text-center name'>
-          TRAVATAR</Link>
-        <img className="arrow" src={arrow} />
+        <Link to='/' className='text-white text-3xl text-center flex name'>
+          <p>TRAVATAR</p>
+          <img className="arrow" src={arrow} />
+        </Link>
       </div>
       <div className="headerItems flex">
         <div className='text-right m-2'>
-          <Link to='/manager'>Manager</Link>
+          {user ? 
+            <Link to='/manager'>Trips</Link>
+          : <></>}
         </div>
         <div className='text-right m-2'>
           <Link to='/about'>About</Link>
@@ -31,6 +34,7 @@ const Header = () => {
             <button 
               className="flex items-center justify-center m-2"
               onClick={() => {
+              fetch('/api/users/logout')
               dispatch(logoutUser());
               dispatch(resetUser());
               navigate('/');
