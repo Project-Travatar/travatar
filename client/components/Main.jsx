@@ -28,12 +28,11 @@ const Main = () => {
   
   return (
     <div>
-      <Header />
-      <body id="landing">
+      <div id="landing">
         <div className="landing-content">
           <div className="slogan">
             {user ? (
-              <div>'
+              <div>
                 <p>Let us plan the trip of your dreams...</p>
                 <Link to='/form' className='get-started'>GET STARTED</Link>
               </div>) : (
@@ -42,7 +41,7 @@ const Main = () => {
           </div>
         </div>
 
-      </body>
+      </div>
 
     </div>
   );
