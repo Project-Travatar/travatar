@@ -1,8 +1,6 @@
 import { Outlet, useLocation } from 'react-router-dom';
 import { useTransition, animated } from '@react-spring/web';
 
-import Header from './Header';
-
 const AnimatedRoutes = () => {
   const location = useLocation();
   const transitions = useTransition(location?.pathname, {
@@ -22,7 +20,6 @@ const Form = () => {
   
   return (
     <>
-      <Header />
       <div className="form-container">
         <div>
           <h2 className='text-2xl text-center font-bold'>Enter in your travel details...</h2>

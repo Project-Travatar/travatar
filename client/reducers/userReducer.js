@@ -105,6 +105,9 @@ export const userSlice = createSlice({
       state.isError = false;
       state.message = '';
     },
+    loginUserSync: (state, action) => {
+      state.user = action.payload;
+    }
   },
   extraReducers: (builder) => {
     builder.addCase(registerUser.pending, (state) => {
@@ -141,5 +144,5 @@ export const userSlice = createSlice({
   },
 })
 
-export const { resetUser } = userSlice.actions;
+export const { resetUser, loginUserSync } = userSlice.actions;
 export default userSlice.reducer;
