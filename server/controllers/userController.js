@@ -83,10 +83,38 @@ const getUser = async (req, res) => {
   
 };
 
+const authLogin = async (req, res) => {
+  console.log('request to login user');
+  const { email, id, given_name, family_name } = res.locals.user;
+  console.log('email', email);
+  try {
+    const user = await User.findOne({ email });
+    console.log('user', user);
+
+    if (!user) {
+      const salt = await bcrypt.genSalt(10);
+      const hashedPassword = await bcrypt.hash(id, salt);
+      const newUser = await User.create({firstName: given_name, lastName: family_name, email: email, password: hashedPassword});
+      console.log('newUser', newUser);
+      res.cookie('authToken', generateToken(newUser._id), { httpOnly: true });
+      return res.redirect('http://localhost:5173');
+    }else {
+      console.log('this user exists');
+      // const exisitingUser = await user.findOne({ email });
+      // console.log('existing user', exisitingUser);
+      res.cookie('authToken', generateToken(user._id), { httpOnly: true });
+      return res.redirect('http://localhost:5173');
+    }
+  }
+  catch(err){
+
+  }
+}
+
 
 // generate json web token
 const generateToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET, {expiresIn: '30d'})
 }
 
-module.exports = { registerUser, loginUser, getUser };
+module.exports = { registerUser, loginUser, getUser, authLogin };
