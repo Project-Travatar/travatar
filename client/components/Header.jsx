@@ -18,7 +18,9 @@ const Header = () => {
       </div>
       <div className="headerItems flex">
         <div className='text-right m-2'>
-          <Link to='/manager'>Manager</Link>
+          {user ? 
+            <Link to='/manager'>Trips</Link>
+          : <></>}
         </div>
         <div className='text-right m-2'>
           <Link to='/about'>About</Link>
@@ -31,6 +33,7 @@ const Header = () => {
             <button 
               className="flex items-center justify-center m-2"
               onClick={() => {
+              fetch('/api/users/logout')
               dispatch(logoutUser());
               dispatch(resetUser());
               navigate('/');
