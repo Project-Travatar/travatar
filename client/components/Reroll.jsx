@@ -7,17 +7,17 @@ const Reroll = (props) => {
     const dispatch = useDispatch();
     const dropdownRef = useRef(null);
     const formData = useSelector(state => state.trip);
-    // console.log('form data:', formData);
-    // console.log('itinerary:', props.itinerary);
-    // console.log('formData:', Page6.formData);
+    const itinerary = useSelector(state => state.itinerary);
+    const activities = useSelector(state => state.activities);
+    // console.log('trip:', formData);
+    // console.log('itinerary:', itinerary);
 //call the parameter sent in the request body itineraryId
 
     function rerollAct () {
         const newAct = dropdownRef.current.value;
-        let curr;
-        // console.log('formData:', formData);
+        // console.log('formData:', formData, 'destination:', formData.destination);
         // console.log()
-        console.log('new activity:', newAct, 'in the', props.timeOfDay, 'on the date', props.date);
+        // console.log('new activity:', newAct, 'in the', props.timeOfDay, 'on the date', props.date);
         fetch('/api/trip/update', {
             method: "POST",
             headers: {
@@ -25,6 +25,7 @@ const Reroll = (props) => {
                 'Authorization': `Bearer ${localStorage.getItem('userToken')}`,
                 'body': {
                     itineraryId: formData.id,
+                    destination: formData.destination,
                     newActivity: newAct,
                     timeOfDay: props.timeOfDay,
                     date: props.date
@@ -33,9 +34,11 @@ const Reroll = (props) => {
         })
             .then(res => res.json())
             .then((json) => {
-                curr = json
-                // dispatch(updateItinerary(curr))
-                console.log('server res:', curr);
+                // dispatch(updateItinerary({
+                    // ...itinerary,
+                    // itinerary[props.date] = json
+                // }))
+                console.log('server res:', json);
             })
     }
     return (

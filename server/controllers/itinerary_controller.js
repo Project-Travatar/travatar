@@ -25,7 +25,7 @@ const openai = new OpenAI({ apiKey: process.env.OPEN_AI_API_KEY });
 const tripController = {
   // buildTrip - To fetch itinerary from API request to Open AI
   async buildTrip(req, res, next) {
-    console.log("buildTrip invoked");
+    // console.log("buildTrip invoked");
     const { destination, startDate, endDate, activities, budget, travelers, groupDescription } = req.body;
     res.locals.tripName = `${destination} from ${startDate} to ${endDate}`;
     // Update prompt below to reflect req.body information - DONE (J.H.)
@@ -78,7 +78,7 @@ const tripController = {
       .then (result => {
         console.log("itinerary successfully saved in database");
         res.locals.itinerary = result;
-        console.log('itinerary cont result:', res.locals.itinerary);
+        // console.log('itinerary cont result:', res.locals.itinerary);
         return next();
       })
       .catch (err => {
@@ -153,7 +153,7 @@ const tripController = {
       .then (result => {
         // console.log(result);
         res.locals.allTrips = result;
-        console.log("All trips retrieved - retrieveAllTrips middleware");
+        // console.log("All trips retrieved - retrieveAllTrips middleware");
         return next();
       })
       .catch (err => {

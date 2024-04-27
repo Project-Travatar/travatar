@@ -31,7 +31,7 @@ const Page3 = () => {
   };
 
   function renderActCards() {
-    const acts = ['Hiking', 'Local Events', 'Restaurants', 'Danger', 'Safety', 'Museums']
+    const acts = ['Hiking', 'Local Events', 'Restaurants', 'Danger', 'Museums', 'Performances']
     return (
       <ul className="activities">
         {acts.map((activity, index) => (
