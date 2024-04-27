@@ -23,7 +23,6 @@ const Form = () => {
   
   return (
     <>
-      <Header />
       <div className="form-container">
         <div>
           <h2 className='text-2xl text-center font-bold form-title'>Enter in your travel details...</h2>

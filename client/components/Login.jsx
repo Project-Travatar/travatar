@@ -1,4 +1,3 @@
-import Header from "./Header";
 import { useNavigate } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import { loginUser, resetUser } from '../reducers/userReducer';
@@ -12,6 +11,15 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const dispatch = useDispatch();
   const { user, isError, isSuccess, isLoading, message } = useSelector((state) => state.user);
+
+  const signInWithGoogle = () => {
+    window.location.href = window.origin + "/api/auth/google"
+    // fetch('/api/auth/google')
+    //   .then(res => res.json())
+    //   .then(data => {
+    //     console.log('data', data);
+    //     })
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -40,8 +48,7 @@ const Login = () => {
     }, [isSuccess]);
 
   return (
-    <div className='login-registration-page'>
-      <Header />
+    <div className='login-registration-page' style={{height: '94vh'}}>
       <div className="flex flex-col justify-center items-center">
         <div className="login-registration-form w-3/5 border border-transparent rounded-lg pt-4 mt-20 mb-5 p-10">
           <h2 className="text-center font-bold text-white text-4xl mt-10">Login</h2>
@@ -59,7 +66,7 @@ const Login = () => {
             <button type="submit" className="block text-white border border-blue-500 bg-blue-500 hover:bg-blue-600 bg-opacity-90 hover:text-slate-400 rounded-md py-2 ml-auto rounded-full px-8">Login</button>
           </form>
           <div className="oauth-container flex mt-20">
-            <button type="button" onClick={() => console.log('Google Oauth clicked!')} className="block text-white border border-slate-400 bg-slate-400 bg-opacity-60 hover:bg-slate-600 hover:text-slate-400 rounded-md py-2 rounded-full px-12 text-xl">G OAuth</button>
+            <button type="button" onClick={signInWithGoogle} className="block text-white border border-slate-400 bg-slate-400 bg-opacity-60 hover:bg-slate-600 hover:text-slate-400 rounded-md py-2 rounded-full px-12 text-xl">G OAuth</button>
             <button type="button" onClick={() => console.log('Facebook Oauth clicked!')} className="block text-white border border-slate-400 bg-slate-400 bg-opacity-60 hover:bg-slate-600 hover:text-slate-400 rounded-md py-2 ml-auto rounded-full px-12 text-xl">F OAuth</button>
           </div>
         </div>
