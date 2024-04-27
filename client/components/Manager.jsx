@@ -7,16 +7,18 @@ const Manager = () => {
   const [itineraries, setItineraries] = useState([]);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
+  const { user } = useSelector((state) => state.user)
   // Retrieve all itineraries associated with the user and update state
   useEffect(() => {
     try {
       const getItineraryList = async () => {
         let itineraryList = await fetch('api/trip/retrieve', {
-          method: 'GET',
+          method: 'POST',
             headers: {
               'Authorization': `Bearer ${localStorage.getItem('userToken')}`,
+              'Content-Type': 'application/json',
             },
+            body: JSON.stringify(user),
         });
   
         itineraryList = await itineraryList.json();
@@ -41,7 +43,7 @@ const Manager = () => {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${localStorage.getItem('userToken')}`,
         },
-        body: JSON.stringify({ tripId: tripId }),
+        body: JSON.stringify({ tripId: tripId, user: user }),
       });
 
       remainingTrips = await remainingTrips.json();

@@ -105,12 +105,14 @@ const tripController = {
   },
 
   // retrieveAll - To retrieve all trips saved for a specific user
-  retrieveAll(req, res, next) {
+  retrieveUserItineraries(req, res, next) {
+    const { _id } = req.body;
+    console.log(req.body)
     Itinerary.find({
-      "email": req.body.email,
-    })
+      user: _id,
+    }).populate('user')
       .then (result => {
-        // console.log(result);
+        console.log(result);
         res.locals.allTrips = result;
         console.log("All trips retrieved - retrieveAllTrips middleware");
         return next();
