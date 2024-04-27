@@ -31,10 +31,10 @@ const Page3 = () => {
   };
 
   function renderActCards() {
-    const actCards = ['Hiking', 'Local Events', 'Restaurants', 'Danger', 'Safety', 'Museums']
+    const acts = ['Hiking', 'Local Events', 'Restaurants', 'Danger', 'Safety', 'Museums']
     return (
       <ul className="activities">
-        {actCards.map((activity, index) => (
+        {acts.map((activity, index) => (
           <li key={index} className='activity-card'>
             <label>
               <input

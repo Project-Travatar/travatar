@@ -2,7 +2,7 @@ import Reroll from './Reroll.jsx';
 import { useState } from 'react';
 
 const Itinerary = ({ itinerary }) => {
-  console.log(itinerary);
+  // console.log(itinerary);
   if (itinerary) return (
     <div id='itinerary-details'>
       {Object.entries(itinerary.itinerary).map(([date, timesOfDay]) => (

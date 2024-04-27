@@ -15,6 +15,7 @@ const Reroll = (props) => {
     function rerollAct () {
         const newAct = dropdownRef.current.value;
         let curr;
+        console.log('formData:', formData);
         // console.log('new activity:', newAct, 'in the', props.timeOfDay, 'on the date', props.date);
         fetch('/api/trip/update', {
             method: "POST",
@@ -22,16 +23,18 @@ const Reroll = (props) => {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${localStorage.getItem('userToken')}`,
                 'body': {
-                    itineraryId: newAct,
-                    ...formData
+                    itineraryId: formData.id,
+                    newActivity: newAct,
+                    timeOfDay: props.timeOfDay,
+                    date: props.date
                 }
               }
         })
             .then(res => res.json())
             .then((json) => {
                 curr = json
-                dispatch(updateItinerary(curr))
-                console.log('update trip:', curr);
+                // dispatch(updateItinerary(curr))
+                console.log('server res:', curr);
             })
     }
     return (

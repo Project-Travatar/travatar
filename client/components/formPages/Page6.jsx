@@ -3,15 +3,15 @@ import { Link, useNavigate } from 'react-router-dom';
 import { updateItinerary } from '../../reducers/itineraryReducer';
 import Loader from '../Loader';
 
-import { updateGroupDescription } from '../../reducers/tripReducer';
+import { updateGroupDescription, updateId } from '../../reducers/tripReducer';
 import { useState } from 'react';
 
 const Page6 = () => {
+  const formData = useSelector(state => state.trip);
   const { groupDescription } = useSelector(state => state.trip);
 
   const [loading, setLoading] = useState(false);
 
-  const formData = useSelector(state => state.trip);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -36,8 +36,11 @@ const Page6 = () => {
         body: JSON.stringify(formData)
       });
       const parsedData = await response.json();
+      const itinerary = await JSON.parse(parsedData.trip).itinerary;
       if (response.ok) {
-        dispatch(updateItinerary(parsedData.itinerary));
+        dispatch(updateItinerary(itinerary));
+        dispatch(updateId(parsedData._id))
+        console.log('page6 serv res', parsedData);
         navigate('/itinerary');
         setLoading(false);
       } else {
@@ -54,12 +57,36 @@ const Page6 = () => {
     }
   };
 
+  // function renderGroupCards() {
+  //   const groups = ['Solo Traveler', 'Family with Young Kids', 'Family of All Ages', 'Adults', 'Friends', 'Couple']
+  //   return (
+  //     <ul className="groups">
+  //       {groups.map((group, index) => (
+  //         <li key={index} className='group-card'>
+  //           <label>
+  //             <input
+  //               type="radio"
+  //               name="groupDescription"
+  //               value={group}
+  //               onChange={handleDescriptionChange}
+  //               checked={groupDescription === group}
+  //               onKeyDown={handleKeyDown}
+  //             />
+  //             {group}
+  //           </label>
+  //         </li>
+  //       ))}
+  //     </ul>
+  //   );
+  // }
+
 return (
     <div className="bg-gray-300 rounded border-4 border-black ">
       <div>{
         loading ? <div id='loader'><Loader/></div> :
         <>
           <p>What best describes your travel group...</p>
+          {/* {renderGroupCards()} */}
           <ul className="groups">
             <li>
               <label className='group-card'>
