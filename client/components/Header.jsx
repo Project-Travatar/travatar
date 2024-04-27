@@ -5,7 +5,7 @@ const Header = () => {
   return (
     <div className="header-container">
       <div>
-        <Link to='/' className='text-blue-600 text-3xl font-bold font-serif text-center'>Travelotl</Link>
+        <Link to='/' className='text-blue-600 text-3xl font-bold font-serif text-center'>Travatar</Link>
       </div>
       <div className='text-right m-2'>
         <Link to='/manager'>Manager</Link>

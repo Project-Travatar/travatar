@@ -15,8 +15,9 @@ const Reroll = (props) => {
     function rerollAct () {
         const newAct = dropdownRef.current.value;
         let curr;
-        console.log('formData:', formData);
-        // console.log('new activity:', newAct, 'in the', props.timeOfDay, 'on the date', props.date);
+        // console.log('formData:', formData);
+        // console.log()
+        console.log('new activity:', newAct, 'in the', props.timeOfDay, 'on the date', props.date);
         fetch('/api/trip/update', {
             method: "POST",
             headers: {
