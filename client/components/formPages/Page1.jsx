@@ -36,7 +36,7 @@ const Page1 = () => {
       />
       <div>
         <Link to='/form/page2'>
-          <button className='m-4 text-blue-600 underline' type='button'>Next</button>
+          <button className='m-4 text-blue-600 underline next-button' type='button'>Next</button>
         </Link>
       </div>
     </div>
