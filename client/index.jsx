@@ -3,14 +3,13 @@ import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-
 import tripReducer from './reducers/tripReducer';
 import itineraryReducer from './reducers/itineraryReducer';
-
+import userReducer from './reducers/userReducer';
 import App from './App';
 import Manager from './components/Manager';
 import Main from './components/Main';
-
+import Header from './components/Header';
 import About from './components/About';
 import Login from './components/Login';
 import Form from './components/Form';
@@ -23,11 +22,14 @@ import Page6 from './components/formPages/Page6';
 import ItineraryPage from './components/ItineraryPage';
 import Register from './components/Register';
 import '../styles.css';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const store = configureStore({
   reducer: {
     trip: tripReducer,
     itinerary: itineraryReducer,
+    user: userReducer,
   }
 });
 
@@ -37,6 +39,7 @@ createRoot(root).render(
   <React.StrictMode>
     <Provider store={store}>
       <Router>
+        <Header />
         <Routes>
           <Route path="/" element={<App />}>
             <Route index element={<Main />} />
@@ -56,6 +59,7 @@ createRoot(root).render(
           <Route path="/itinerary" element={<ItineraryPage />} />
         </Routes>
       </Router>
+      <ToastContainer position="bottom-right" theme="dark" />
     </Provider>
   </React.StrictMode>
 );
