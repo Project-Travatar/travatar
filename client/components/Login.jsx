@@ -13,6 +13,15 @@ const Login = () => {
   const dispatch = useDispatch();
   const { user, isError, isSuccess, isLoading, message } = useSelector((state) => state.user);
 
+  const signInWithGoogle = () => {
+    window.location.href = window.origin + "/api/auth/google"
+    // fetch('/api/auth/google')
+    //   .then(res => res.json())
+    //   .then(data => {
+    //     console.log('data', data);
+    //     })
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -59,7 +68,7 @@ const Login = () => {
             <button type="submit" className="block text-slate-600 border border-slate-600 bg-blue-400 hover:bg-blue-600 hover:text-white rounded-md py-2 ml-auto rounded-full px-8">Login</button>
           </form>
           <div className="oauth-container flex mt-20">
-            <button type="button" onClick={() => console.log('Google Oauth clicked!')} className="block text-slate-600 border border-slate-600 bg-slate-400 hover:bg-slate-600 hover:text-white rounded-md py-2 rounded-full px-12 text-xl">G OAuth</button>
+            <button type="button" onClick={signInWithGoogle} className="block text-slate-600 border border-slate-600 bg-slate-400 hover:bg-slate-600 hover:text-white rounded-md py-2 rounded-full px-12 text-xl">G OAuth</button>
             <button type="button" onClick={() => console.log('Facebook Oauth clicked!')} className="block text-slate-600 border border-slate-600 bg-slate-400 hover:bg-slate-600 hover:text-white rounded-md py-2 ml-auto rounded-full px-12 text-xl">F OAuth</button>
           </div>
         </div>

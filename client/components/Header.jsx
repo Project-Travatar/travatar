@@ -31,6 +31,7 @@ const Header = () => {
             <button 
               className="flex items-center justify-center m-2"
               onClick={() => {
+              fetch('/api/users/logout')
               dispatch(logoutUser());
               dispatch(resetUser());
               navigate('/');
