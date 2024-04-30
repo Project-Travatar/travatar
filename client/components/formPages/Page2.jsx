@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 
 import { updateStartDate, updateEndDate } from '../../reducers/tripReducer';
+import '../../stylesheets/formPages/page2.css';
 
 const Page2 = () => {
   const navigate = useNavigate();
@@ -27,12 +28,12 @@ const Page2 = () => {
   };
 
   return (
-    <div className="bg-gray-300 rounded border-4 border-black">
+    <div className="page-2 rounded">
       <div>
-        <label className='text-2xl' htmlFor="startDate">
+        <label className='text-2xl text-[#95a3c1]' htmlFor="startDate">
           Start Date:
         </label>
-        <input className='typed-input' 
+        <input className='typed-input trip-details-input' 
           type="date"
           name="startDate"
           value={startDate}
@@ -41,10 +42,10 @@ const Page2 = () => {
         />
       </div>
       <div>
-        <label className='text-2xl' htmlFor="endDate">
+        <label className='text-2xl text-[#95a3c1]' htmlFor="endDate">
           End Date:
         </label>
-        <input className='typed-input'
+        <input className='typed-input trip-details-input'
           type="date"
           name="endDate"
           value={endDate}
@@ -54,10 +55,10 @@ const Page2 = () => {
       </div>
       <div >
         <Link to='/form'>
-          <button className='m-4 underline text-blue-600' type='button'>Back</button>
+          <button className='m-4 trip-details-button' type='button'>Back</button>
         </Link>
         <Link to='/form/page3'>
-          <button className='m-4 underline text-blue-600' type='button'>Next</button>
+          <button className='m-4 trip-details-button' type='button'>Next</button>
         </Link>
       </div>
     </div>

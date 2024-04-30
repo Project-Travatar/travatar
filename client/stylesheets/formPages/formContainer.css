@@ -2,12 +2,15 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 70vh;
+  height: 75vh;
   width: 100wh;
+  font-family: 'Raleway';
 }
 
 .form-title {
   display: flex;
   justify-content: center;
   align-items: center;
+  color: #95a3c1;
+  background-color: #0f1b42;
 }

@@ -1,0 +1,9 @@
+.page-2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 91vh;
+    width: 100vw;
+    background-color: #0f1b42
+  }

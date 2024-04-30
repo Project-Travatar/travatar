@@ -14,18 +14,46 @@
     border-color: rgb(4, 153, 153);
 } */
 
-.activities{
-    column-count:3;
+
+.activities, .groups {
+    display: flex;
+    flex-flow: row wrap;
+    inline-size: 75vw;
+    align-items: center;
+    justify-content: center;
 }
 
-.groups{
-    column-count: 2;
+
+.trip-details-button {
+    color: white;
+    background-color: #6663fd;
+    border-radius: 8px;
+    width: 110px;
+    height: 35px;
+    font-family: 'Libre Franklin';
 }
 
-.activity-card{
+input.trip-details-input {
+    background-color: #333f68;
+    color: #95a3c1;
+    font-family: 'Libre Franklin';
+}
+
+.form-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 91vh;
+    width: 100vw;
+    background-color: #0f1b42
+}
+
+
+.activity-card {
     border-radius: 25px;
-    background: rgba(37, 99, 235);
-    box-shadow: 10px 5px 5px black;
+    background: #333f68;
+    box-shadow: 10px 10px 10px #95a3c1;
     color: white;
     padding: 24px;
     width: 200px;
@@ -34,10 +62,10 @@
     text-justify: center;
     font-weight: bold;
     font-size: 150%;
-    margin: 5px;
+    margin: 10px;
 }
 
-.group-card{
+.group-card {
     display: flex;
     border-radius: 25px;
     background: rgba(37, 99, 235);
@@ -51,12 +79,6 @@
     font-weight: bold;
     font-size: 125%;
     margin: 5px;
-}
-
-.next-button {
-    color: black;
-    border-radius: 4px;
-    background: gray;
 }
 
 .typed-input {
@@ -146,4 +168,3 @@
     border: black;
     border-width: 5px !important;
 }
-
