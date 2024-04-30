@@ -26,7 +26,7 @@ const Page6 = () => {
   const handleClick = async () => {
     setLoading(true);
     try {
-      console.log('data sent to back end server to make API request');
+      console.log('data sent to back end server to make API request', ' data:', formData);
       const response = await fetch('/api/trip/build', {
         method: 'POST',
         headers: {
