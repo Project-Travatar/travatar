@@ -55,7 +55,7 @@ const Page6 = () => {
   };
 
 return (
-    <div className="bg-gray-300 rounded border-4 border-black ">
+    <div className="rounded form-page">
       <div>{
         loading ? <div id='loader'><Loader/></div> :
         <>
@@ -129,9 +129,9 @@ return (
           </ul>
           <div>
             <Link to='/form/page5'>
-              <button className='m-4 underline text-blue-600' type='button'>Back</button>
+              <button className='m-4 trip-details-button' type='button'>Back</button>
             </Link>
-            <button className='m-4 underline text-blue-600' type='submit' onClick={handleClick}>Submit</button>
+            <button className='m-4 trip-details-button' type='submit' onClick={handleClick}>Submit</button>
           </div>
         </>  
       }</div>
