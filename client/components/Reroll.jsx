@@ -7,38 +7,31 @@ const Reroll = (props) => {
     const dispatch = useDispatch();
     const dropdownRef = useRef(null);
     const formData = useSelector(state => state.trip);
-    const itinerary = useSelector(state => state.itinerary);
+    const itinerary = useSelector(state => state.itinerary.itinerary);
     const activities = useSelector(state => state.activities);
-    // console.log('trip:', formData);
-    // console.log('itinerary:', itinerary);
 //call the parameter sent in the request body itineraryId
 
     function rerollAct () {
         const newAct = dropdownRef.current.value;
-        // console.log('formData:', formData, 'destination:', formData.destination);
-        // console.log()
-        // console.log('new activity:', newAct, 'in the', props.timeOfDay, 'on the date', props.date);
+        const body = {itineraryId: formData.id,
+            destination: formData.destination,
+            newActivity: newAct,
+            timeOfDay: props.timeOfDay,
+            date: props.date}
+
         fetch('/api/trip/update', {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${localStorage.getItem('userToken')}`,
-                'body': {
-                    itineraryId: formData.id,
-                    destination: formData.destination,
-                    newActivity: newAct,
-                    timeOfDay: props.timeOfDay,
-                    date: props.date
-                }
-              }
+                'Authorization': `Bearer ${localStorage.getItem('userToken')}`
+            },
+            body: JSON.stringify(body)
         })
             .then(res => res.json())
             .then((json) => {
-                // dispatch(updateItinerary({
-                    // ...itinerary,
-                    // itinerary[props.date] = json
-                // }))
-                console.log('server res:', json);
+                let newItin = structuredClone(itinerary);
+                newItin[props.date][props.timeOfDay] = json[props.date][props.timeOfDay];
+                dispatch(updateItinerary(newItin))
             })
     }
     return (

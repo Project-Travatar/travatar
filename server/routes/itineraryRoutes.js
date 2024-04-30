@@ -10,8 +10,8 @@ router.post('/build', (req, res, next)=>{
   res.status(201).send(res.locals.itinerary);
 });
 
-router.post('/update', authController.protect, tripController.updateTrip, (req, res) => {
-  res.status(200).send({message: 'itinerary updated.'});
+router.post('/update', authController.protect, tripController.updateTripActivities, tripController.updateTrip, (req, res) => {
+  res.status(200).send(res.locals.updatedActivity);
 });
 
 router.get('/retrieve', authController.protect, tripController.retrieveAll, (req, res) => {

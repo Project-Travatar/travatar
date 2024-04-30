@@ -8,7 +8,7 @@ import { useState } from 'react';
 const Page6 = () => {
   const formData = useSelector(state => state.trip);
   const { groupDescription } = useSelector(state => state.trip);
-
+  
   const [loading, setLoading] = useState(false);
 
 
@@ -40,6 +40,7 @@ const Page6 = () => {
         },
         body: JSON.stringify(formData)
       });
+      
       const parsedData = await response.json();
       const itinerary = await JSON.parse(parsedData.trip).itinerary;
       if (response.ok) {

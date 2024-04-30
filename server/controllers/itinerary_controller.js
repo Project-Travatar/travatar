@@ -66,6 +66,7 @@ const tripController = {
   // saveTrip - To save the contents of the generated itinerary into the database
   saveTrip(req, res, next) {
     // const { email } = req.body;
+    console.log('itinerary created!!!')
     Itinerary.create({
       // email: req.body.email,
       user: req.user._id,
@@ -110,6 +111,44 @@ const tripController = {
       })
   },
   */
+  async updateTripActivities(req, res, next) {
+    console.log("updateTripActivities invoked");
+    const { newActivity, timeOfDay, date, itineraryId, destination } = req.body;
+    
+    // Update prompt below to reflect req.body information - DONE (J.H.)
+    const prompt = `Recommend a place of interest for ${newActivity} at ${timeOfDay} on the ${date} with its address in ${destination}. Output the response in json format following this schema:
+    // {
+    //  date: {
+    //    time of day: {
+    //      activity: string,
+    //      description: string,
+    //      address: string,
+    //     }
+    //   }
+    // }`;
+
+    // console.log(prompt);
+    try {
+      const completion = await openai.chat.completions.create({
+        messages: [{"role": "system", "content": "You are a helpful travel planning assistant."},
+            {
+              "role": "user", 
+              "content": prompt,
+            }],
+        model: "gpt-3.5-turbo",
+        response_format: { type: "json_object" },
+      });
+      
+      console.log(completion.choices[0]);
+      res.locals.updatedActivity = JSON.parse(completion.choices[0].message.content);
+
+      //console.log('AI response for updating an activity: ', res.locals.updatedActivity)
+      return next();
+    } catch (err) {
+      console.log(err);
+    }
+  },
+  /*
   updateTrip(req, res, next) {
     //const itineraryId = req.body.itineraryId;
     const {tripName, destination, startDate, endDate, trip, user} = req.body;
@@ -125,7 +164,47 @@ const tripController = {
       res.status(500).json({message: 'error updating itinerary.'})
     })
   },
+  */
 
+  async updateTrip(req, res, next) {
+    const itineraryId = req.body.itineraryId;
+    const { date, timeOfDay} = req.body;
+    //-----------------------------------------------------------------------
+
+    Itinerary.find({_id:itineraryId})
+    .then(itin => {
+      console.log('itin:', itin);
+      const tripParsed = JSON.parse(itin[0].trip);
+      // console.log('not updated trip object: ', JSON.stringify(tripParsed));
+      //console.log('updatedTripActivity: ',updatedTripActivity);
+      tripParsed['itinerary'][date][timeOfDay] = res.locals.updatedActivity[date][timeOfDay];
+
+      Itinerary.findOneAndUpdate({_id:itineraryId},{
+        trip: JSON.stringify(tripParsed)
+      })
+      .then(result => {
+        Itinerary.find({_id:itineraryId})
+        .then(data => console.log('Itinerary after update: ', data))
+        .catch(err => console.log('err: ', err));
+        //console.log('trip object: ', JSON.parse(result.trip));
+        return next();
+        
+      })
+      .catch(err => {
+        console.log('error occured while trying to update itinerary.');
+        
+      })
+
+
+    })
+    .catch(err => console.log('err: ', err));
+
+
+    //---------------------------------------------------
+
+
+    
+  },
   // deleteTrip - To delete the itinerary from the database based on the ObjectId
   deleteTrip(req, res, next) {
     console.log(req.body);

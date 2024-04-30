@@ -10,7 +10,6 @@ const Main = () => {
   const { user } = useSelector((state) => state.user);
   const dispatch = useDispatch();
   useEffect(() => {
-    console.log('Main useEffect');
     (async () => {
       const response = await fetch('/api/users/verifyCookie')
       if(!response.ok) {
