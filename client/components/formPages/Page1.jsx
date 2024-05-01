@@ -2,7 +2,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 
 import { updateDestination } from '../../reducers/tripReducer';
-import '../../stylesheets/formPages/page1.css';
 
 const Page1 = () => {
   const navigate = useNavigate();
@@ -23,7 +22,7 @@ const Page1 = () => {
   };
 
   return (
-    <div className="rounded page-1">
+    <div className="form-page">
       <label className='text-2xl text-[#95a3c1]' htmlFor="destination">
         Destination:
       </label>

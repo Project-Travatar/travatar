@@ -22,7 +22,7 @@ const Page5 = () => {
   };
 
   return (
-    <div className="rounded form-page">
+    <div className="form-page">
       <label className='text-2xl text-[#95a3c1]' htmlFor="travelers">
         No. of Travelers
       </label>
