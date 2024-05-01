@@ -5,7 +5,7 @@ import { expect as vExpect, test as vTest} from 'vitest';
 import Header from '../../client/components/Header';
 import Itinerary from '../../server/models/Itinerary';
 import About from '../../client/components/About';
-import { AbstractChatCompletionRunner } from 'openai/lib/AbstractChatCompletionRunner';
+// import { AbstractChatCompletionRunner } from 'openai/lib/AbstractChatCompletionRunner';
 
 
 // describe('Register Page', () => {
