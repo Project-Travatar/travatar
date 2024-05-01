@@ -85,7 +85,7 @@ return (
       <div>{
         loading ? <div id='loader'><Loader/></div> :
         <>
-          <p>What best describes your travel group...</p>
+          <p className='text-center text-2xl text-[#95a3c1]'>What best describes your travel group...</p>
           {renderGroupCards()}
           {/* <ul className="groups">
             <li>
@@ -154,7 +154,7 @@ return (
               </label>
             </li>
           </ul> */}
-          <div>
+          <div className='trip-details-button-container'>
             <Link to='/form/page5'>
               <button className='m-4 trip-details-button' type='button'>Back</button>
             </Link>
