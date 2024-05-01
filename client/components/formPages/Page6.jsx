@@ -2,16 +2,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { updateItinerary } from '../../reducers/itineraryReducer';
 import Loader from '../Loader';
-
-import { updateGroupDescription } from '../../reducers/tripReducer';
+import { updateGroupDescription, updateId } from '../../reducers/tripReducer';
 import { useState } from 'react';
 
 const Page6 = () => {
+  const formData = useSelector(state => state.trip);
   const { groupDescription } = useSelector(state => state.trip);
-
+  
   const [loading, setLoading] = useState(false);
 
-  const formData = useSelector(state => state.trip);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -20,6 +19,12 @@ const Page6 = () => {
     const { value, checked } = e.target;
     if (checked) {
       dispatch(updateGroupDescription(value));
+    }
+  };
+
+  const handleKeyDown = async (event) => {
+    if (event.key === 'Enter') {
+      await handleClick();
     }
   };
 
@@ -35,9 +40,13 @@ const Page6 = () => {
         },
         body: JSON.stringify(formData)
       });
+      
       const parsedData = await response.json();
+      const itinerary = await JSON.parse(parsedData.trip).itinerary;
       if (response.ok) {
-        dispatch(updateItinerary(parsedData.itinerary));
+        dispatch(updateItinerary(itinerary));
+        dispatch(updateId(parsedData._id))
+        console.log('page6 serv res', parsedData);
         navigate('/itinerary');
         setLoading(false);
       } else {
@@ -52,19 +61,37 @@ const Page6 = () => {
 
   };
 
-  const handleKeyDown = async (event) => {
-    if (event.key === 'Enter') {
-      await handleClick();
-    }
-  };
+  function renderGroupCards() {
+    const groups = ['Solo Traveler', 'Family with Young Kids', 'Family of All Ages', 'Adults', 'Friends', 'Couple']
+    return (
+      <ul className="groups">
+        {groups.map((group, index) => (
+          <li key={index} className='group-card'>
+            <label>
+              <input
+                type="radio"
+                name="groupDescription"
+                value={group}
+                onChange={handleDescriptionChange}
+                checked={groupDescription === group}
+                onKeyDown={handleKeyDown}
+              />
+              {group}
+            </label>
+          </li>
+        ))}
+      </ul>
+    );
+  }
 
 return (
     <div className="form-page">
       <div>{
         loading ? <div id='loader'><Loader/></div> :
         <>
-          <p className='text-2xl text-[#95a3c1] text-center'>What best describes your travel group</p>
-          <ul className="groups">
+          <p>What best describes your travel group...</p>
+          {renderGroupCards()}
+          {/* <ul className="groups">
             <li>
               <label className='group-card'>
                 <input
@@ -130,8 +157,8 @@ return (
                 Friends
               </label>
             </li>
-          </ul>
-          <div className='trip-details-button-container'>
+          </ul> */}
+          <div>
             <Link to='/form/page5'>
               <button className='m-4 trip-details-button' type='button'>Back</button>
             </Link>
