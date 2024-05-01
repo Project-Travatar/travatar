@@ -52,8 +52,8 @@ const Page3 = () => {
     );
   }
   return (
-    <div className="bg-gray-300 rounded border-4 border-black ">
-      <p className='text-2xl text-center'>Select activities you are interested in...</p>
+    <div className="form-page">
+      <p className='text-2xl text-center text-[#95a3c1]'>Select activities you are interested in...</p>
       {renderActCards()}
       <div>
         <Link to='/form/page2'>

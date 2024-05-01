@@ -78,6 +78,7 @@ input.trip-details-input {
 input[type='checkbox'], input[type='radio'] {
     width: 20px;
     accent-color: #0f1b42;
+    vertical-align: middle;
 }
 
 .group-card {
