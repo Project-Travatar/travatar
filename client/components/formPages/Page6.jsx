@@ -57,10 +57,6 @@ const Page6 = () => {
     }
   }
 
-  const handleCardClick = () => {
-
-  };
-
   function renderGroupCards() {
     const groups = ['Solo Traveler', 'Family with Young Kids', 'Family of All Ages', 'Adults', 'Friends', 'Couple']
     return (
