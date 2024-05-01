@@ -2,7 +2,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 
 import { updateStartDate, updateEndDate } from '../../reducers/tripReducer';
-import '../../stylesheets/formPages/page2.css';
 
 const Page2 = () => {
   const navigate = useNavigate();
@@ -28,7 +27,7 @@ const Page2 = () => {
   };
 
   return (
-    <div className="page-2 rounded">
+    <div className="form-page">
       <div>
         <label className='text-2xl text-[#95a3c1]' htmlFor="startDate">
           Start Date:

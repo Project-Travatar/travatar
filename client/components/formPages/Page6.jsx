@@ -48,6 +48,10 @@ const Page6 = () => {
     }
   }
 
+  const handleCardClick = () => {
+
+  };
+
   const handleKeyDown = async (event) => {
     if (event.key === 'Enter') {
       await handleClick();
@@ -55,11 +59,11 @@ const Page6 = () => {
   };
 
 return (
-    <div className="rounded form-page">
+    <div className="form-page">
       <div>{
         loading ? <div id='loader'><Loader/></div> :
         <>
-          <p>What best describes your travel group...</p>
+          <p className='text-2xl text-[#95a3c1] text-center'>What best describes your travel group</p>
           <ul className="groups">
             <li>
               <label className='group-card'>
@@ -114,7 +118,7 @@ return (
               </label>
             </li>
             <li>
-              <label className='group-card'>
+              <label className='group-card' onClick={handleCardClick}>
                 <input
                   type="radio"
                   name="groupDescription"
@@ -127,7 +131,7 @@ return (
               </label>
             </li>
           </ul>
-          <div>
+          <div className='trip-details-button-container'>
             <Link to='/form/page5'>
               <button className='m-4 trip-details-button' type='button'>Back</button>
             </Link>

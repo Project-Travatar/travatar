@@ -18,7 +18,7 @@
 .activities, .groups {
     display: flex;
     flex-flow: row wrap;
-    inline-size: 75vw;
+    inline-size: 800px;
     align-items: center;
     justify-content: center;
 }
@@ -33,10 +33,18 @@
     font-family: 'Libre Franklin';
 }
 
+.trip-details-button-container {
+    display: flex;
+    justify-content: center;
+}
+
 input.trip-details-input {
     background-color: #333f68;
     color: #95a3c1;
     font-family: 'Libre Franklin';
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .form-page {
@@ -51,34 +59,43 @@ input.trip-details-input {
 
 
 .activity-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border-radius: 25px;
     background: #333f68;
-    box-shadow: 10px 10px 10px #95a3c1;
-    color: white;
-    padding: 24px;
-    width: 200px;
+    color: #95a3c1;
+    width: 240px;
     height: 85px;
     text-align: center;
     text-justify: center;
     font-weight: bold;
     font-size: 150%;
     margin: 10px;
+   /* box-shadow: 10px 5px 5px black; */
+}
+
+input[type='checkbox'], input[type='radio'] {
+    width: 20px;
+    accent-color: #0f1b42;
 }
 
 .group-card {
     display: flex;
+    align-items: center;
+    justify-content: center;
     border-radius: 25px;
-    background: rgba(37, 99, 235);
-    box-shadow: 10px 5px 5px black;
-    color: white;
+    background: #333f68;
+    /* box-shadow: 10px 5px 5px black; */
+    color: #95a3c1;
     padding: 24px;
-    width: 200px;
+    width: 240px;
     height: 85px;
     text-align: center;
     text-justify: center;
     font-weight: bold;
-    font-size: 125%;
-    margin: 5px;
+    font-size: 145%;
+    margin: 10px;
 }
 
 .typed-input {

@@ -2,7 +2,7 @@ import { Outlet, useLocation } from 'react-router-dom';
 import { useTransition, animated } from '@react-spring/web';
 
 import Header from './Header';
-import '../stylesheets/formPages/formContainer.css';
+import '../stylesheets/formContainer.css';
 
 const AnimatedRoutes = () => {
   const location = useLocation();
