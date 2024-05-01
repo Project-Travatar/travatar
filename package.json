@@ -36,7 +36,8 @@
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.22.3",
     "react-toastify": "^10.0.5",
-    "redux": "^4.0.5"
+    "redux": "^4.0.5",
+    "vite-jest": "^0.1.4"
   },
   "devDependencies": {
     "@testing-library/react": "^15.0.4",

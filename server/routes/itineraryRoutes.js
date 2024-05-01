@@ -4,10 +4,14 @@ const tripController = require('../controllers/itinerary_controller');
 const authController = require('../controllers/auth_controller');
 
 router.post('/build', (req, res, next)=>{
-  console.log("build route invoked");
+  // console.log("build route invoked");
   return next();
 },authController.protect, tripController.buildTrip, tripController.saveTrip, (req, res) => {
   res.status(201).send(res.locals.itinerary);
+});
+
+router.post('/update', authController.protect, tripController.updateTripActivities, tripController.updateTrip, (req, res) => {
+  res.status(200).send(res.locals.updatedActivity);
 });
 
 router.post('/retrieve', authController.protect, tripController.retrieveUserItineraries, (req, res) => {
