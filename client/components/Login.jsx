@@ -47,6 +47,15 @@ const Login = () => {
       }
     }, [isSuccess]);
 
+    //Toast message handling for successful Google login
+    const handleGoogleSignIn = async () => {
+      try {
+        await dispatch(loginUser()); // No need to pass email and password here
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
   return (
     <div className='login-registration-page' style={{height: '94vh'}}>
       <div className="flex flex-col justify-center items-center">

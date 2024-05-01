@@ -104,21 +104,20 @@ const tripController = {
       })
   },
 
-  // retrieveAll - To retrieve all trips saved for a specific user
+  // retrieveUserItineraries - To retrieve all trips saved for a specific user
   retrieveUserItineraries(req, res, next) {
-    const { _id } = req.body;
-    console.log(req.body)
+    const userId = req.body.user._id;
     Itinerary.find({
-      user: _id,
+      user: userId,
     }).populate('user')
       .then (result => {
-        console.log(result);
+        // console.log(result);
         res.locals.allTrips = result;
-        console.log("All trips retrieved - retrieveAllTrips middleware");
+        console.log(`All trips retrieved for user ${userId} - retrieveAllTrips middleware`);
         return next();
       })
       .catch (err => {
-        console.log("could not retrieve all trips - retrieveAllTrips middleware");
+        console.log(`could not retrieve trips for user ${userId} - retrieveAllTrips middleware`);
         console.error("retrieveAllTrips ERROR =>", err);
       })
   },
