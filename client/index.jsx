@@ -3,9 +3,9 @@ import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import tripReducer from './reducers/tripReducer';
-import itineraryReducer from './reducers/itineraryReducer';
-import userReducer from './reducers/userReducer';
+// import tripReducer from './reducers/tripReducer';
+// import itineraryReducer from './reducers/itineraryReducer';
+// import userReducer from './reducers/userReducer';
 import App from './App';
 import Manager from './components/Manager';
 import Main from './components/Main';
@@ -24,14 +24,10 @@ import Register from './components/Register';
 import '../styles.css';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import setupStore from './store';
 
-export const store = configureStore({
-  reducer: {
-    trip: tripReducer,
-    itinerary: itineraryReducer,
-    user: userReducer,
-  }
-});
+
+export const store = setupStore();
 
 const root = document.getElementById('root');
 
