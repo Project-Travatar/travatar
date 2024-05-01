@@ -12,7 +12,7 @@
     "build": "vite build",
     "serve": "vite preview",
     "server": "nodemon",
-    "test": "jest",
+    "test": "jest --testPathPattern tests/server",
     "vite-test": "vite-jest",
     "vitest": "vitest --dir tests/react"
   },
