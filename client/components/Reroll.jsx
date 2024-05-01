@@ -1,35 +1,38 @@
 import { useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { updateItinerary } from '../reducers/itineraryReducer';
+import { updateActivities } from '../reducers/tripReducer';
 
 const Reroll = (props) => {
+    const dispatch = useDispatch();
     const dropdownRef = useRef(null);
     const formData = useSelector(state => state.trip);
-    console.log('form data:', formData);
-    console.log('itinerary:', props.itinerary);
-    // console.log('formData:', Page6.formData);
+    const itinerary = useSelector(state => state.itinerary.itinerary);
+    const activities = useSelector(state => state.activities);
 //call the parameter sent in the request body itineraryId
+
     function rerollAct () {
         const newAct = dropdownRef.current.value;
+        const body = {itineraryId: formData.id,
+            destination: formData.destination,
+            newActivity: newAct,
+            timeOfDay: props.timeOfDay,
+            date: props.date}
 
-        let curr;
-        console.log('new activity:', newAct, 'in the', props.timeOfDay, 'on the date', props.date);
         fetch('/api/trip/update', {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${localStorage.getItem('userToken')}`,
-                'body': {
-                    itineraryId: newAct,
-                    ...formData
-                }
-              }
+                'Authorization': `Bearer ${localStorage.getItem('userToken')}`
+            },
+            body: JSON.stringify(body)
         })
             .then(res => res.json())
             .then((json) => {
-                curr = json
-                dispatch(ItineraryReducer(curr))
+                let newItin = structuredClone(itinerary);
+                newItin[props.date][props.timeOfDay] = json[props.date][props.timeOfDay];
+                dispatch(updateItinerary(newItin))
             })
-        console.log('update trip:', curr);
     }
     return (
         <div className='rerollActivities'>

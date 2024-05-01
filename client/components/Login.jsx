@@ -66,8 +66,8 @@ const Login = () => {
             <button type="submit" className="block text-white border border-blue-500 bg-blue-500 hover:bg-blue-600 bg-opacity-90 hover:text-slate-400 rounded-md py-2 ml-auto rounded-full px-8">Login</button>
           </form>
           <div className="oauth-container flex mt-20">
-            <button type="button" onClick={signInWithGoogle} className="block text-white border border-slate-400 bg-slate-400 bg-opacity-60 hover:bg-slate-600 hover:text-slate-400 rounded-md py-2 rounded-full px-12 text-xl">G OAuth</button>
-            <button type="button" onClick={() => console.log('Facebook Oauth clicked!')} className="block text-white border border-slate-400 bg-slate-400 bg-opacity-60 hover:bg-slate-600 hover:text-slate-400 rounded-md py-2 ml-auto rounded-full px-12 text-xl">F OAuth</button>
+            <button type="button" onClick={signInWithGoogle} className="block text-slate-600 border border-slate-600 bg-slate-400 hover:bg-slate-600 hover:text-white rounded-md py-2 rounded-full px-12 text-xl">G OAuth</button>
+            <button type="button" onClick={() => console.log('Facebook Oauth clicked!')} className="block text-slate-600 border border-slate-600 bg-slate-400 hover:bg-slate-600 hover:text-white rounded-md py-2 ml-auto rounded-full px-12 text-xl">F OAuth</button>
           </div>
         </div>
       </div>
