@@ -4,7 +4,7 @@ import { updateItinerary } from "../reducers/itineraryReducer";
 import { Link, useNavigate } from 'react-router-dom';
 
 const Manager = () => {
-  const [itineraries, setItineraries] = useState([]);
+  const [ itineraries, setItineraries ] = useState([]);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
