@@ -3,6 +3,7 @@ const path = require ('path');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv')
 const cookieParser = require('cookie-parser');
+const morgan = require('morgan');
 
 //use environmental variables
 dotenv.config({ path: './config.env' });
@@ -25,6 +26,9 @@ connectDB();
 
 const app = express();
 const port = 3000;
+
+//logging
+app.use(morgan('dev'));
 
 app.use(express.json());
 app.use(cookieParser());
