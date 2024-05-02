@@ -13,7 +13,9 @@
     border-width: 4px;
     border-color: rgb(4, 153, 153);
 } */
-
+body {
+    overflow: hidden;
+}
 
 .activities, .groups {
     display: flex;
@@ -51,11 +53,9 @@ input.trip-details-input {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 91vh;
+    height: 88vh;
     width: 100vw;
-    background-color: #0f1b42
 }
-
 
 .activity-card {
     display: flex;

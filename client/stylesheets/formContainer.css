@@ -2,10 +2,10 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 94vh;
-  width: 100wh;
+  height: 100vh;
+  width: 100vw;
   font-family: 'Raleway';
-  overflow: hidden;
+  background-color: #0f1b42
 }
 
 .form-title {
