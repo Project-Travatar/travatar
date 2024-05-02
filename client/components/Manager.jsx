@@ -4,7 +4,7 @@ import { updateItinerary } from "../reducers/itineraryReducer";
 import { Link, useNavigate } from 'react-router-dom';
 
 const Manager = () => {
-  const [itineraries, setItineraries] = useState([]);
+  const [ itineraries, setItineraries ] = useState([]);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -91,7 +91,9 @@ const Manager = () => {
 
   const itineraryList = [...itineraries];
   const renderList = itineraryList.map((itinerary) => {
+    console.log('manager itin:', itinerary);
     return (<div className='trip-tile' key={itinerary._id} id={itinerary._id}>
+      <h3><b>{itinerary.title}</b></h3>
       <h3>{itinerary.destination}</h3>
       <p>From: <b>{itinerary.startDate}</b></p>
       <p>To: <b>{itinerary.endDate}</b></p>

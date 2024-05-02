@@ -43,6 +43,8 @@ const Page6 = () => {
       
       const parsedData = await response.json();
       const itinerary = await JSON.parse(parsedData.trip).itinerary;
+      // console.log('parsed data:', parsedData.trip);
+      // console.log('itin:', itinerary);
       if (response.ok) {
         dispatch(updateItinerary(itinerary));
         dispatch(updateId(parsedData._id))
