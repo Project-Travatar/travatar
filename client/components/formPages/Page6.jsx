@@ -31,7 +31,7 @@ const Page6 = () => {
   const handleClick = async () => {
     setLoading(true);
     try {
-      console.log('data sent to back end server to make API request');
+      console.log('data sent to back end server to make API request', ' data:', formData);
       const response = await fetch('/api/trip/build', {
         method: 'POST',
         headers: {
@@ -56,10 +56,6 @@ const Page6 = () => {
       console.error('Error with request:', error);
     }
   }
-
-  const handleCardClick = () => {
-
-  };
 
   function renderGroupCards() {
     const groups = ['Solo Traveler', 'Family with Young Kids', 'Family of All Ages', 'Adults', 'Friends', 'Couple']
@@ -89,7 +85,7 @@ return (
       <div>{
         loading ? <div id='loader'><Loader/></div> :
         <>
-          <p>What best describes your travel group...</p>
+          <p className='text-center text-2xl text-[#95a3c1]'>What best describes your travel group...</p>
           {renderGroupCards()}
           {/* <ul className="groups">
             <li>
@@ -158,7 +154,7 @@ return (
               </label>
             </li>
           </ul> */}
-          <div>
+          <div className='trip-details-button-container'>
             <Link to='/form/page5'>
               <button className='m-4 trip-details-button' type='button'>Back</button>
             </Link>
