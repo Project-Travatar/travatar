@@ -57,7 +57,7 @@ const Login = () => {
               <label className="block text-white mt-8 mb-1">
                 Email Address:
               </label>
-              <input type="text" value={email} placeholder="teamAvatar@gmail.com" className="input-field rounded-md border-0 py-1 px-3 text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-400 mb-4 flex-grow" onChange={(e) => setEmail(e.target.value)} />
+              <input type="text" value={email} placeholder="Enter your email" className="input-field rounded-md border-0 py-1 px-3 text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-400 mb-4 flex-grow" onChange={(e) => setEmail(e.target.value)} />
               <label className="block text-white w-1/3 mb-1">
                 Password:
               </label>
