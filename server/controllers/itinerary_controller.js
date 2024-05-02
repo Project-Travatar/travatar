@@ -168,6 +168,8 @@ const tripController = {
 
   async updateTrip(req, res, next) {
     const itineraryId = req.body.itineraryId;
+    // console.log('itinerary id:', itineraryId)
+    console.log(req.body);
     const { date, timeOfDay} = req.body;
     //-----------------------------------------------------------------------
 
