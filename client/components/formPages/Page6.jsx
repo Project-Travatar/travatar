@@ -31,7 +31,7 @@ const Page6 = () => {
   const handleClick = async () => {
     setLoading(true);
     try {
-      console.log('data sent to back end server to make API request');
+      console.log('data sent to back end server to make API request', ' data:', formData);
       const response = await fetch('/api/trip/build', {
         method: 'POST',
         headers: {
@@ -83,11 +83,11 @@ const Page6 = () => {
   }
 
 return (
-    <div className="bg-gray-300 rounded border-4 border-black ">
+    <div className="form-page">
       <div>{
         loading ? <div id='loader'><Loader/></div> :
         <>
-          <p>What best describes your travel group...</p>
+          <p className='text-center text-2xl text-[#95a3c1]'>What best describes your travel group...</p>
           {renderGroupCards()}
           {/* <ul className="groups">
             <li>
@@ -143,7 +143,7 @@ return (
               </label>
             </li>
             <li>
-              <label className='group-card'>
+              <label className='group-card' onClick={handleCardClick}>
                 <input
                   type="radio"
                   name="groupDescription"
@@ -156,11 +156,11 @@ return (
               </label>
             </li>
           </ul> */}
-          <div>
+          <div className='trip-details-button-container'>
             <Link to='/form/page5'>
-              <button className='m-4 underline text-blue-600' type='button'>Back</button>
+              <button className='m-4 trip-details-button' type='button'>Back</button>
             </Link>
-            <button className='m-4 underline text-blue-600' type='submit' onClick={handleClick}>Submit</button>
+            <button className='m-4 trip-details-button' type='submit' onClick={handleClick}>Submit</button>
           </div>
         </>  
       }</div>
