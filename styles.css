@@ -157,20 +157,24 @@ input[type='checkbox'], input[type='radio'] {
 
 #itinerary-details {
     margin-left: 20px;
+    background-color: black;
 }
 
 .date {
     font-weight: bold;
     text-decoration: underline;
+
 }
 
 .day-entry {
     margin-left: 10px;
     margin-bottom: 20px;
+    display: flex;
 }
 
 .day-details {
     margin-left: 10px;
+    display: flex;
 }
 
 .time-of-day {
@@ -179,6 +183,9 @@ input[type='checkbox'], input[type='radio'] {
 
 .activity-details {
     margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+    width: 25vw;
 }
 
 .login-container {
