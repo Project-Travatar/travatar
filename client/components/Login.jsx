@@ -47,6 +47,15 @@ const Login = () => {
       }
     }, [isSuccess]);
 
+    //Toast message handling for successful Google login
+    const handleGoogleSignIn = async () => {
+      try {
+        await dispatch(loginUser()); // No need to pass email and password here
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
   return (
     <div className='login-registration-page' style={{height: '94vh'}}>
       <div className="flex flex-col justify-center items-center">
@@ -57,7 +66,7 @@ const Login = () => {
               <label className="block text-white mt-8 mb-1">
                 Email Address:
               </label>
-              <input type="text" value={email} placeholder="teamAvatar@gmail.com" className="input-field rounded-md border-0 py-1 px-3 text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-400 mb-4 flex-grow" onChange={(e) => setEmail(e.target.value)} />
+              <input type="text" value={email} placeholder="Enter your email" className="input-field rounded-md border-0 py-1 px-3 text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-400 mb-4 flex-grow" onChange={(e) => setEmail(e.target.value)} />
               <label className="block text-white w-1/3 mb-1">
                 Password:
               </label>
@@ -66,10 +75,8 @@ const Login = () => {
             <button type="submit" className="block text-white border border-blue-500 bg-blue-500 hover:bg-blue-600 bg-opacity-90 hover:text-slate-400 rounded-md py-2 ml-auto rounded-full px-8">Login</button>
           </form>
           <div className="oauth-container flex mt-20">
-
             <button type="button" onClick={signInWithGoogle} className="block text-slate-600 border border-slate-600 bg-slate-400 hover:bg-slate-600 hover:text-white rounded-md py-2 rounded-full px-12 text-xl">G OAuth</button>
             <button type="button" onClick={() => console.log('Facebook Oauth clicked!')} className="block text-slate-600 border border-slate-600 bg-slate-400 hover:bg-slate-600 hover:text-white rounded-md py-2 ml-auto rounded-full px-12 text-xl">F OAuth</button>
-
           </div>
         </div>
       </div>

@@ -22,11 +22,11 @@ const Page1 = () => {
   };
 
   return (
-    <div className="bg-gray-300 rounded border-4 border-black">
-      <label className='text-2xl' htmlFor="destination">
+    <div className="form-page">
+      <label className='text-2xl text-[#95a3c1]' htmlFor="destination">
         Destination:
       </label>
-      <input className='typed-input'
+      <input className='typed-input text-[#95a3c1] trip-details-input'
         type="text"
         name="destination"
         value={destination}
@@ -35,7 +35,7 @@ const Page1 = () => {
       />
       <div>
         <Link to='/form/page2'>
-          <button className='m-4 text-blue-600 underline' type='button'>Next</button>
+          <button className='m-4 trip-details-button' type='button'>Next</button>
         </Link>
       </div>
     </div>
