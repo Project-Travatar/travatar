@@ -113,6 +113,7 @@ const tripController = {
   */
   async updateTripActivities(req, res, next) {
     console.log("updateTripActivities invoked");
+    console.log('req.body:', req.body);
     const { newActivity, timeOfDay, date, itineraryId, destination } = req.body;
     
     // Update prompt below to reflect req.body information - DONE (J.H.)
@@ -139,7 +140,7 @@ const tripController = {
         response_format: { type: "json_object" },
       });
       
-      console.log(completion.choices[0]);
+      console.log('completion.choices[0]', completion.choices[0]);
       res.locals.updatedActivity = JSON.parse(completion.choices[0].message.content);
 
       //console.log('AI response for updating an activity: ', res.locals.updatedActivity)
