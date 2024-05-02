@@ -37,5 +37,5 @@ describe('itineraryRoutes', () => {
     }); 
   });
 
-  describe('POST /api/trip/create')
+  // describe('POST /api/trip/create')
 });
