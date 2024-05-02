@@ -11,7 +11,8 @@ const initialState = {
   activities: [],
   budget: 500,
   travelers: 1,
-  groupDescription: 'Solo traveler',
+  groupDescription: 'Solo Traveler',
+  id: '1111111111111'
 };
 
 const tripSlice = createSlice({
@@ -39,9 +40,12 @@ const tripSlice = createSlice({
     updateGroupDescription(state, action) {
       state.groupDescription = action.payload;
     },
+    updateId(state, action) {
+      state.id = action.payload;
+    }
   },
 });
 
 export const { actions, reducer } = tripSlice;
-export const { updateDestination, updateStartDate, updateEndDate, updateActivities, updateBudget, updateTravelers, updateGroupDescription } = actions;
+export const { updateDestination, updateStartDate, updateEndDate, updateActivities, updateBudget, updateTravelers, updateGroupDescription, updateId } = actions;
 export default reducer;
