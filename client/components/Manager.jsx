@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { updateItinerary } from "../reducers/itineraryReducer";
 import { Link, useNavigate } from 'react-router-dom';
+import { updateId, updateDestination } from "../reducers/tripReducer";
 
 const Manager = () => {
   const [itineraries, setItineraries] = useState([]);
@@ -80,7 +81,7 @@ const Manager = () => {
             },
             body: JSON.stringify({ tripId: tripId, user: user }),
           });
-      console.log(response);
+      // console.log(response);
       const itineraryList = await response.json();
 
       // console.log(itineraryList);
@@ -91,10 +92,12 @@ const Manager = () => {
         // console.log("Parse ID:", trip.tripId, "| Target ID:", tripId)
         if (trip._id === tripId) {
           foundTrip = JSON.parse(trip.trip);
+          dispatch(updateId(trip._id));
+          dispatch(updateDestination(trip.destination));
           break;
         }
       }
-      console.log("See Details of:", foundTrip);
+      // console.log("See Details of:", foundTrip);
       if (foundTrip) {
         dispatch(updateItinerary(foundTrip.itinerary));
         navigate('/itinerary');
@@ -107,7 +110,7 @@ const Manager = () => {
 
   const itineraryList = [...itineraries];
   
-  console.log(itineraryList);
+  // console.log(itineraryList);
 
   const renderList = itineraryList.map((itinerary) => {
       return <div className='trip-tile' key={itinerary._id} id={itinerary._id}>

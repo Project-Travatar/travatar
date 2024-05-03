@@ -31,7 +31,7 @@ const Page6 = () => {
   const handleClick = async () => {
     setLoading(true);
     try {
-      console.log('data sent to back end server to make API request');
+      // console.log('data sent to back end server to make API request');
       const response = await fetch('/api/trip/build', {
         method: 'POST',
         headers: {
@@ -46,7 +46,7 @@ const Page6 = () => {
       if (response.ok) {
         dispatch(updateItinerary(itinerary));
         dispatch(updateId(parsedData._id))
-        console.log('page6 serv res', parsedData);
+        // console.log('page6 serv res', parsedData);
         navigate('/itinerary');
         setLoading(false);
       } else {
