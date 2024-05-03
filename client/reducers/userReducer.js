@@ -24,9 +24,9 @@ const authService = {
       const errorMessage = await response.json();
       throw new Error(errorMessage.error);
     }
-    console.log('Successful response from server received:', response);
+    // console.log('Successful response from server received:', response);
     const data = await response.json();
-    console.log('Parsed response from server:', data);
+    // console.log('Parsed response from server:', data);
     localStorage.setItem('userToken', data.token);
     return data;
   },
@@ -43,9 +43,9 @@ const authService = {
       const errorMessage = await response.json();
       throw new Error(errorMessage.error);
     }
-    console.log('Successful response from server received', response);
+    // console.log('Successful response from server received', response);
     const data = await response.json();
-    console.log('Parsed response from server:', data);
+    // console.log('Parsed response from server:', data);
     localStorage.setItem('userToken', data.token);
     return data;
   },
@@ -56,9 +56,9 @@ export const registerUser = createAsyncThunk(
   'auth/register',
   async (user, thunkAPI) => {
     try {
-      console.log('Request received from register component:', user)
+      // console.log('Request received from register component:', user)
       const response = await authService.register(user);
-      console.log('response from authService.register:', response);
+      // console.log('response from authService.register:', response);
       return response;
     } catch (error) {
       console.error(error);
@@ -77,9 +77,9 @@ export const loginUser = createAsyncThunk(
   'auth/login',
   async (user, thunkAPI) => {
     try {
-      console.log('Request received from login component:', user);
+      // console.log('Request received from login component:', user);
       const response = await authService.login(user);
-      console.log('response from authService.login:', response);
+      // console.log('response from authService.login:', response);
       return response;
     } catch (error) {
       const message = error?.response?.data?.message ||
