@@ -3,8 +3,9 @@
   justify-content: center;
   align-items: center;
   height: 94vh;
-  width: 100wh;
+  width: 100vw;
   font-family: 'Raleway';
+  background-color: #0f1b42;
   overflow: hidden;
 }
 
@@ -13,5 +14,4 @@
   justify-content: center;
   align-items: center;
   color: #95a3c1;
-  background-color: #0f1b42;
 }

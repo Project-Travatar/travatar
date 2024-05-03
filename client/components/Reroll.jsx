@@ -11,6 +11,7 @@ const Reroll = (props) => {
     const dropdownRef = useRef(null);
     const [ shouldShow, setShouldShow ] = useState(false);
 
+    console.log('itinerary:', itinerary)
     function rerollAct () {
         const newAct = dropdownRef.current.value;
         const body = {itineraryId: formData.id,
@@ -19,8 +20,9 @@ const Reroll = (props) => {
             timeOfDay: props.timeOfDay,
             date: props.date}
 
+        console.log('itineraryId:', formData.id);
         fetch('/api/trip/update', {
-            method: "POST",
+            method: "PUT",
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${localStorage.getItem('userToken')}`

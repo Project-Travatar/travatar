@@ -173,6 +173,8 @@ const tripController = {
 
   async updateTrip(req, res, next) {
     const itineraryId = req.body.itineraryId;
+    // console.log('itinerary id:', itineraryId)
+    console.log(req.body);
     const { date, timeOfDay} = req.body;
     //-----------------------------------------------------------------------
 
@@ -229,11 +231,12 @@ const tripController = {
       })
   },
 
-  // retrieveAll - To retrieve all trips saved for a specific user
-  retrieveAll(req, res, next) {
+  // retrieveUserItineraries - To retrieve all trips saved for a specific user
+  retrieveUserItineraries(req, res, next) {
+    const userId = req.body.user._id;
     Itinerary.find({
-      "email": req.body.email,
-    })
+      user: userId,
+    }).populate('user')
       .then (result => {
         // console.log(result);
         res.locals.allTrips = result;
@@ -241,7 +244,7 @@ const tripController = {
         return next();
       })
       .catch (err => {
-        console.log("could not retrieve all trips - retrieveAllTrips middleware");
+        console.log(`could not retrieve trips for user ${userId} - retrieveAllTrips middleware`);
         console.error("retrieveAllTrips ERROR =>", err);
       })
   },
