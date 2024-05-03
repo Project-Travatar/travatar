@@ -162,9 +162,10 @@ input[type='checkbox'], input[type='radio'] {
    flex-direction: column;
    align-items: center;
    justify-content: center;
-   color: #95a3c1;
-   height: 94vh;
-   width: 100vw;
+   color: white;
+   margin-top: 12vh;
+   height: 100vh;
+   width: 99vw;
 }
 
 #itinerary-details {
@@ -189,7 +190,7 @@ input[type='checkbox'], input[type='radio'] {
 .day-details {
     margin-left: 10px;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr);;
 }
 
 .time-of-day {
@@ -202,6 +203,10 @@ input[type='checkbox'], input[type='radio'] {
     display: flex;
     flex-direction: column;
     width: 20vw;
+    background-color:  #333f68;
+    padding: 20px;
+    border-radius: 20px;
+
 }
 
 .activity-header {

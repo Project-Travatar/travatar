@@ -1,7 +1,9 @@
 import Reroll from './Reroll.jsx';
 
+
 const Itinerary = ({ itinerary }) => {
   // console.log('jsx itin:', itinerary);
+  
   if (itinerary) return (
     <div id='itinerary-details'>
       {Object.entries(itinerary.itinerary).map(([date, timesOfDay]) => (
@@ -14,7 +16,10 @@ const Itinerary = ({ itinerary }) => {
                   <h3 className="time-of-day">{timeOfDay}</h3>
                   <Reroll timeOfDay={timeOfDay} date={date} itinerary={itinerary.itinerary} />
                 </div>
-                <p>Activity: {suggestion.activity}</p>
+                <div className='activity='>
+                <p className='underline'>Activity: </p>
+                <p>{suggestion.activity}</p>
+                </div>
                 <p>Description: {suggestion.description}</p>
                 <p>Address: {suggestion.address}</p>
               </div>
