@@ -5,7 +5,7 @@ import Itinerary from "./Itinerary"
 const ItineraryPage = () => {
   const itinerary = useSelector(state => state.itinerary);
   return (
-    <div>
+    <div id='itinerary-page'>
       <h2>Your Itinerary</h2>
       <Itinerary itinerary={itinerary} />
     </div>

@@ -155,26 +155,35 @@ input[type='checkbox'], input[type='radio'] {
     text-decoration: underline;
 }
 
+#itinerary-page {
+    background-color: #0f1b42
+
+}
+
 #itinerary-details {
     margin-left: 20px;
-    background-color: black;
+    height: 91.5vh;
+    width: 98vw;
+    color: #95a3c1;
 }
 
 .date {
     font-weight: bold;
     text-decoration: underline;
+    align-self: center;
 
 }
 
 .day-entry {
     margin-left: 10px;
     margin-bottom: 20px;
-    display: flex;
+    display: grid;
 }
 
 .day-details {
     margin-left: 10px;
-    display: flex;
+    display: grid;
+    text-align: center;
 }
 
 .time-of-day {
