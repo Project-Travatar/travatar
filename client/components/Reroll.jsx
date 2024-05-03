@@ -2,6 +2,7 @@ import { useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateItinerary } from '../reducers/itineraryReducer';
 import { updateActivities } from '../reducers/tripReducer';
+import '../stylesheets/reroll.css';
 
 const Reroll = (props) => {
     const dispatch = useDispatch();
@@ -56,7 +57,7 @@ const Reroll = (props) => {
     }
     else{
         return (
-            <button className='updateActivitiesButton' type='button' onClick={updateShouldShow}>get New Activity</button>
+            <button className='updateActivitiesButton' type='button' onClick={updateShouldShow}>Get New Activity</button>
         )
     }
 }
