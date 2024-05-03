@@ -32,14 +32,13 @@ const Itinerary = ({ itinerary }) => {
                   <Reroll timeOfDay={timeOfDay} date={date} itinerary={itinerary.itinerary} />
                 </div>
                 <div className='activity'>
-                <p className='underline'>Activity: </p>
-                <p>{suggestion.activity}</p>
+                <p><span className='underline'>Activity</span>: {suggestion.activity}</p>
                 </div>
                 <div className='description'>
-                <p>Description: {suggestion.description}</p>
+                <p><span className='underline'>Description</span>: {suggestion.description}</p>
                 </div>
                 <div className='address'>
-                <p>Address: {suggestion.address}</p>
+                <p><span className='underline'>Address</span>: {suggestion.address}</p>
                 </div>
                 <img id={'img' + ++document.backgroundDiv} src='' alt='' width='100%'></img>
               </div>

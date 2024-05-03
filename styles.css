@@ -204,7 +204,6 @@ input[type='checkbox'], input[type='radio'] {
     background-color:  #333f68;
     padding: 20px;
     border-radius: 20px;
-
 }
 
 .activity-header {
@@ -212,8 +211,12 @@ input[type='checkbox'], input[type='radio'] {
     justify-content: space-between;
 }
 
-.activity {
-    
+.activity, .description {
+    display: inline;
+}
+
+.address {
+    margin-bottom: 3px;
 }
 
 
