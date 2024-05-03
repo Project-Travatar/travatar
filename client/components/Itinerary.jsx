@@ -31,7 +31,7 @@ const Itinerary = ({ itinerary }) => {
                   <h3 className="time-of-day">{timeOfDay}</h3>
                   <Reroll timeOfDay={timeOfDay} date={date} itinerary={itinerary.itinerary} />
                 </div>
-                <div className='activity' style='float:left;width:50%'>
+                <div className='activity'>
                 <p className='underline'>Activity: </p>
                 <p>{suggestion.activity}</p>
                 </div>
