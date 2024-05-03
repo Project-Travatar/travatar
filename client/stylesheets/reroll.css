@@ -1,0 +1,23 @@
+.updateActivitiesButton {
+    align-self: center;
+    font-size: 10px;
+    color: white;
+    background-color: #6663fd;
+    border-radius: 8px;
+    width: 100px;
+    height: 15px;
+    font-family: 'Libre Franklin';
+}
+
+.activityDropdown {
+    margin-right: 5px;
+    background-color: #6663fd;
+}
+
+.activityDropdown:hover {
+    color: white;
+}
+
+.rerollButton {
+    font-size: 16.5px;
+}

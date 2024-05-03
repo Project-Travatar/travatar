@@ -10,8 +10,10 @@ const Itinerary = ({ itinerary }) => {
           <div className="day-details">
             {Object.entries(timesOfDay).map(([timeOfDay, suggestion]) => (
               <div className='activity-details' key={timeOfDay}>
-                <h3 className="time-of-day">{timeOfDay}</h3>
-                <Reroll timeOfDay={timeOfDay} date={date} itinerary={itinerary.itinerary}/>
+                <div className='activity-header'>
+                  <h3 className="time-of-day">{timeOfDay}</h3>
+                  <Reroll timeOfDay={timeOfDay} date={date} itinerary={itinerary.itinerary} />
+                </div>
                 <p>Activity: {suggestion.activity}</p>
                 <p>Description: {suggestion.description}</p>
                 <p>Address: {suggestion.address}</p>

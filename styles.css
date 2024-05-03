@@ -15,6 +15,7 @@
 } */
 body {
     overflow: auto;
+    background-color: #0f1b42;
 }
 
 .activities, .groups {
@@ -156,29 +157,33 @@ input[type='checkbox'], input[type='radio'] {
 }
 
 #itinerary-page {
+   /* background-color: #0f1b42; */
    display: flex;
    flex-direction: column;
    align-items: center;
+   justify-content: center;
+   color: #95a3c1;
+   height: 94vh;
+   width: 100vw;
 }
 
 #itinerary-details {
-    margin-left: 20px;
-    height: 91.5vh;
-    width: 98vw;
-    color: #95a3c1;
+    
 }
 
 .date {
     font-weight: bold;
-    text-decoration: underline;
     align-self: center;
 
 }
 
 .day-entry {
     margin-left: 10px;
-    margin-bottom: 20px;
-    display: grid;
+    margin-top: 20px;
+    padding-bottom: 20px;
+    display: flex;
+    border-bottom: 2px solid;
+    border-bottom-color: #95a3c1;
 }
 
 .day-details {
@@ -189,14 +194,21 @@ input[type='checkbox'], input[type='radio'] {
 
 .time-of-day {
     font-weight: bold;
+    text-align: center;
 }
 
 .activity-details {
     margin-left: 10px;
     display: flex;
     flex-direction: column;
-    width: 25vw;
+    width: 20vw;
 }
+
+.activity-header {
+    display: flex;
+    justify-content: space-between;
+}
+
 
 .login-container {
     border: black;
