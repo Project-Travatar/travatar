@@ -163,8 +163,7 @@ input[type='checkbox'], input[type='radio'] {
    align-items: center;
    justify-content: center;
    color: white;
-   margin-top: 12vh;
-   height: 100vh;
+   min-height: 100vh;
    width: 99vw;
 }
 
@@ -189,8 +188,7 @@ input[type='checkbox'], input[type='radio'] {
 
 .day-details {
     margin-left: 10px;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);;
+    display: flex;
 }
 
 .time-of-day {
@@ -212,6 +210,10 @@ input[type='checkbox'], input[type='radio'] {
 .activity-header {
     display: flex;
     justify-content: space-between;
+}
+
+.activity {
+    
 }
 
 
