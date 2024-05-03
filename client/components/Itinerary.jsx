@@ -1,5 +1,4 @@
 import Reroll from './Reroll.jsx';
-import { useState } from 'react';
 
 const Itinerary = ({ itinerary }) => {
   if (itinerary) return (

@@ -1,6 +1,9 @@
 import { Outlet, useLocation } from 'react-router-dom';
 import { useTransition, animated } from '@react-spring/web';
 
+import Header from './Header';
+import '../stylesheets/formContainer.css';
+
 const AnimatedRoutes = () => {
   const location = useLocation();
   const transitions = useTransition(location?.pathname, {
@@ -22,7 +25,7 @@ const Form = () => {
     <>
       <div className="form-container">
         <div>
-          <h2 className='text-2xl text-center font-bold'>Enter in your travel details...</h2>
+          <h2 className='text-2xl text-center font-bold form-title'>Enter in your travel details...</h2>
         </div>
         <div style={{ position: 'relative' }}>
           <AnimatedRoutes />

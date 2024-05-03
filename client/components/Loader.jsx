@@ -12,7 +12,7 @@ const Loader = () => {
 
   return (
     <div>
-      <h2>LOADING</h2>
+      <h2 className='text-center text-[#95a3c1] text-4xl'>LOADING</h2>
       <video
         src={video}
         autoPlay={true}

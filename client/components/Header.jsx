@@ -12,9 +12,10 @@ const Header = () => {
   return (
     <div className="header-container flex">
       <div className="logo">
-        <Link to='/' className='text-white text-3xl text-center name'>
-          TRAVATAR</Link>
-        <img className="arrow" src={arrow} />
+        <Link to='/' className='text-white text-3xl text-center flex name'>
+          <p>TRAVATAR</p>
+          <img className="arrow" src={arrow} />
+        </Link>
       </div>
       <div className="headerItems flex">
         <div className='text-right m-2'>
