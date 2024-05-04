@@ -21,7 +21,7 @@ const Manager = () => {
   
         itineraryList = await itineraryList.json();
   
-        console.log(itineraryList);
+        // console.log(itineraryList);
         setItineraries(itineraryList);
   
       }

@@ -29,7 +29,9 @@ const Reroll = (props) => {
         })
             .then(res => res.json())
             .then((json) => {
+                console.log('json res:', json);
                 let newItin = structuredClone(itinerary);
+                console.log("new itin:", newItin);
                 newItin[props.date][props.timeOfDay] = json[props.date][props.timeOfDay];
                 dispatch(updateItinerary(newItin))
                 setShouldShow(false);

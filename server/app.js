@@ -5,13 +5,12 @@ const dotenv = require('dotenv')
 const cookieParser = require('cookie-parser');
 
 //use environmental variables
-dotenv.config({ path: './config.env' });
+dotenv.config({ path: './.env' });
 
 // connect to MongoDB cluster
 const connectDB = async () => {
   try {
-    const conn = await mongoose.connect(`${process.env.MONGO_URI}`);
-    // console.log(`MongoDB Connected: ${conn.connection.host}`);
+    const conn = await mongoose.connect(`${process.env.VITE_MONGO_URI}`);
   } catch (err) {
     // console.error(err);
     process.exit(1);
@@ -34,6 +33,11 @@ app.use(express.urlencoded({ extended: true })); //parse urlencoded bodies
 app.use('/api/users', require('./routes/userRoutes'));
 app.use('/api/trip', require('./routes/itineraryRoutes'));
 app.use('/api/auth/google', require('./routes/googleOAuthRoutes'));
+
+app.get('/api/getGplacesKey', (req, res) => {
+  console.log('getKey:', process.env.GPLACES_API_KEY);
+  res.send(process.env.GPLACES_API_KEY);
+})
 
 
 app.get('/', function (req, res) {

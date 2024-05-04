@@ -10,7 +10,7 @@ const protect = async (req, res, next) => {
       token = req.headers.authorization.split(' ')[1];
 
       // Verify token
-      const decoded = jwt.verify(token, process.env.JWT_SECRET)
+      const decoded = jwt.verify(token, process.env.VITE_JWT_SECRET)
 
 
       // Get user from the token, not including the hashed password
@@ -34,7 +34,7 @@ const verifyCookie = async (req, res, next) => {
   console.log('req.cookies', req.cookies);
   const token = req.cookies.authToken;
   try{
-  const decoded = jwt.verify(token, process.env.JWT_SECRET);
+  const decoded = jwt.verify(token, process.env.VITE_JWT_SECRET);
   const user = await User.findById(decoded.id).select('-password');
   console.log('user', user);
 

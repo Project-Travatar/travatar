@@ -27,7 +27,7 @@ describe('itineraryRoutes', () => {
 
     it('should send 200 if token is valid', async () => {
       const Tom = await User.findOne({ email: 'chillkid32@gmail.com' });
-      const TomToken = jwt.sign({ id: Tom._id }, process.env.JWT_SECRET, { expiresIn: '30d' });
+      const TomToken = jwt.sign({ id: Tom._id }, process.env.VITE_JWT_SECRET, { expiresIn: '30d' });
       const response = await request(app)
       .get('/api/trip/retrieve')
       .set('authorization', 'Bearer ' + TomToken);
