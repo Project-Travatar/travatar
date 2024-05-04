@@ -115,7 +115,6 @@ input[type='checkbox'], input[type='radio'] {
     position: relative;
 }
 
-
 #loader {
     display: flex;
     flex-direction: column;
@@ -127,9 +126,6 @@ input[type='checkbox'], input[type='radio'] {
     color: blue;
     text-decoration: underline;
 }
-
-
-
 
 #itinerary-grid {
     display: flex;
@@ -176,10 +172,6 @@ input[type='checkbox'], input[type='radio'] {
    color: white;
    min-height: 100vh;
    width: 99vw;
-}
-
-#itinerary-details {
-    
 }
 
 .date {
@@ -229,7 +221,6 @@ input[type='checkbox'], input[type='radio'] {
 .address {
     margin-bottom: 3px;
 }
-
 
 .login-container {
     border: black;
