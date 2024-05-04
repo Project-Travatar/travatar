@@ -19,6 +19,9 @@
     "start": "node server/server.js"
   },
   "dependencies": {
+    "@googlemaps/js-api-loader": "^1.16.6",
+    "@reach/combobox": "^0.18.0",
+    "@react-google-maps/api": "^2.19.3",
     "@react-spring/web": "^9.7.3",
     "@reduxjs/toolkit": "^2.2.2",
     "@testing-library/user-event": "^14.5.2",
@@ -35,12 +38,14 @@
     "openai": "^4.33.1",
     "pexels": "^1.4.0",
     "react": "^18.2.0",
+    "react-cool-onclickoutside": "^1.7.0",
     "react-dom": "^18.2.0",
     "react-icons": "^5.1.0",
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.22.3",
     "react-toastify": "^10.0.5",
     "redux": "^4.0.5",
+    "use-places-autocomplete": "^4.0.1",
     "vite-jest": "^0.1.4"
   },
   "devDependencies": {

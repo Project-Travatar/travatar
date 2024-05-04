@@ -9,8 +9,7 @@ dotenv.config({ path: './config.env' });
 describe('adding a user', () => {
   let user;
   beforeAll( async () => {
-    console.log(process.env.MONGO_URI)
-    await mongoose.connect(`${process.env.MONGO_URI}`)
+    await mongoose.connect(`${process.env.VITE_MONGO_URI}`)
   });
 
   afterAll(() => {

@@ -114,7 +114,7 @@ const authLogin = async (req, res) => {
 
 // generate json web token
 const generateToken = (id) => {
-  return jwt.sign({ id }, process.env.JWT_SECRET, {expiresIn: '30d'})
+  return jwt.sign({ id }, process.env.VITE_JWT_SECRET, {expiresIn: '30d'})
 }
 
 module.exports = { registerUser, loginUser, getUser, authLogin };

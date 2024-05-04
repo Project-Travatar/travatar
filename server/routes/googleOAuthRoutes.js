@@ -3,13 +3,13 @@ const router = express.Router();
 const { google } = require('googleapis');
 const { authLogin } = require('../controllers/userController');
 
-const { GOOGLE_OAUTH_CLIENT_ID, GOOGLE_OAUTH_CLIENT_SECRET } = process.env;
+const { VITE_GOOGLE_OAUTH_CLIENT_ID, VITE_GOOGLE_OAUTH_CLIENT_SECRET } = process.env;
 const callback_url = 'http://localhost:5173/api/auth/google/callback';
 const GOOGLE_API_URL = 'https://www.googleapis.com/oauth2/v2/userinfo';
 
 const oauth2Client = new google.auth.OAuth2(
-  GOOGLE_OAUTH_CLIENT_ID,
-  GOOGLE_OAUTH_CLIENT_SECRET,
+  VITE_GOOGLE_OAUTH_CLIENT_ID,
+  VITE_GOOGLE_OAUTH_CLIENT_SECRET,
   callback_url
 );
 
@@ -31,7 +31,7 @@ router.get('/', async (req, res, next) => {
 });
 
 router.get('/callback', async (req, res, next) => {
-  console.log('callback route');
+  // console.log('callback route');
   // console.log('req.params', req.params);
   // console.log('req.query', req.query);
 
@@ -46,7 +46,7 @@ router.get('/callback', async (req, res, next) => {
   })
   .then(response => response.json())
   
-  console.log(userData);
+  // console.log(userData);
   res.locals.user = userData;
   // res.location = 'http://localhost:5173';
 
