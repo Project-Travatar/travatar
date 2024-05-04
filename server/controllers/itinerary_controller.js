@@ -4,7 +4,7 @@ const OpenAI = require('openai');
 const express = require('express');
 const app = express();
 const Itinerary = require('../models/Itinerary');
-const { recompileSchema } = require('../models/User');
+// const { recompileSchema } = require('../models/User');
 
 const openai = new OpenAI({ apiKey: process.env.OPEN_AI_API_KEY });
 

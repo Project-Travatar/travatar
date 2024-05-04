@@ -6,7 +6,7 @@ const cookieParser = require('cookie-parser');
 const morgan = require('morgan');
 
 //use environmental variables
-dotenv.config({ path: './.env' });
+dotenv.config({ path: './config.env' });
 
 // connect to MongoDB cluster
 const connectDB = async () => {
