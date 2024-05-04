@@ -8,7 +8,7 @@ const Itinerary = ({ itinerary }) => {
 
   document.backgroundDiv = 0;
   const client = createClient('PEgQiisiCDMXUtU68bsOrQ6YvizFI0M1uhqWesivRNHbIOxdqtlEIRX2');
-  console.log('itinirary: ', JSON.stringify(itinerary));
+  console.log('itinerary: ', JSON.stringify(itinerary));
   let div = 0;
   Object.entries(itinerary.itinerary).map(([date, timesOfDay]) => {
     Object.entries(timesOfDay).map(([timeOfDay, suggestion]) => {

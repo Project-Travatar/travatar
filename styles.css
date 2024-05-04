@@ -115,35 +115,6 @@ input[type='checkbox'], input[type='radio'] {
     position: relative;
 }
 
-#itinerary-grid {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.trip-tile {
-    border: 0.75px solid black;
-    border-radius: 5px;
-    padding: 20px;
-    /* padding-left: 20px;
-    padding-bottom: 20px; */
-    min-width: 400px;
-    margin: 10px;
-
-    /* display: flex;
-    flex-direction: column; */
-}
-
-.tile-buttons {
-    color: blue;
-    max-width: 150px;
-    display: flex;
-    justify-content: space-between;
-
-    :hover {
-        text-decoration: underline;
-    }
-}
-
 #loader {
     display: flex;
     flex-direction: column;
@@ -156,6 +127,42 @@ input[type='checkbox'], input[type='radio'] {
     text-decoration: underline;
 }
 
+#itinerary-grid {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding-left: 4vw;
+    padding-right: 4vw;
+}
+
+.trip-tile {
+    padding: 15px;
+    /* padding-left: 20px;
+    padding-bottom: 20px; */
+    width: 18vw;
+    margin: 10px;
+
+    /* display: flex;
+    flex-direction: column; */
+    color: white;
+    border-radius: 20px;
+    background-color:  #333f68;
+}
+
+.tile-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.tile-button {
+    color: white;
+    background-color: #6663fd;
+    border-radius: 8px;
+    width: 95px;
+    height: 30px;
+}
+
 #itinerary-page {
    /* background-color: #0f1b42; */
    display: flex;
@@ -165,10 +172,6 @@ input[type='checkbox'], input[type='radio'] {
    color: white;
    min-height: 100vh;
    width: 99vw;
-}
-
-#itinerary-details {
-    
 }
 
 .date {
@@ -218,7 +221,6 @@ input[type='checkbox'], input[type='radio'] {
 .address {
     margin-bottom: 3px;
 }
-
 
 .login-container {
     border: black;

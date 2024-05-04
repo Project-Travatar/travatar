@@ -115,12 +115,15 @@ const Manager = () => {
   const renderList = itineraryList.map((itinerary) => {
 
       return <div className='trip-tile' key={itinerary._id} id={itinerary._id}>
-        <h3>{itinerary.destination}</h3>
+        <h3 className="text-center font-bold mb-2 pb-px border-b-2 border-white">{itinerary.destination}</h3>
         <p>From: <b>{itinerary.startDate}</b></p>
         <p>To: <b>{itinerary.endDate}</b></p>
         <p>Created on: <b>{new Date(itinerary.createdAt).toLocaleString()}</b></p>
 
-      <div className="tile-buttons"><button onClick={ seeDetails }>See Details</button><button onClick={ deleteItinerary }>Delete</button></div>
+      <div className = 'tile-buttons'>
+        <button className="tile-button" onClick={ seeDetails }>See Details</button>
+        <button className="tile-button" onClick={ deleteItinerary }>Delete</button>
+        </div>
     </div>})
 
   // state: { itinerary: { itinerary: itinerary.trip }}
@@ -128,13 +131,13 @@ const Manager = () => {
   
 
   return (<div>
-    <h2>Welcome {user.firstName}</h2>
+    <h2 className='text-center text-white text-4xl font-bold mt-2'>Welcome {user.firstName}</h2>
     {renderList.length !==0 ?
-    <> 
-      <h2>Your trips:</h2>
+    <>
+      <h2 className='text-white text-2xl text-center mt-2'>Your Trips</h2>
       <div id='itinerary-grid'>{renderList}</div>
     </>
-    : <><br/> <p>Plan your first trip, what are you waiting for?!</p></>}
+    : <><br/> <p className="text-white text-2xl text-center mt-2">Plan your first trip, what are you waiting for?!</p></>}
   </div>)
 }
 
