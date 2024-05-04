@@ -48,9 +48,11 @@ const Reroll = (props) => {
             <div className='rerollActivities'>
                 <select name="Activities" className="activityDropdown" ref={dropdownRef}>
                     <option value="Food">Food</option>
-                    <option value="Bars">Bars</option>
+                    {/* <option value="Bars">Bars</option> */}
+                    <option value="Danger">Danger</option>
                     <option value="Museums">Museums</option>
                     <option value="Culture">Culture</option>
+                    <option value="Performances">Performances</option>
                     <option value="Events">Events</option>
                 </select>
                 <button className='rerollButton' type="button" onClick={rerollAct}>⟳</button>
