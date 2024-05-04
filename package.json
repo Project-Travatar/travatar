@@ -7,14 +7,16 @@
   "author": "Team Axolotl",
   "license": "MIT",
   "private": false,
+
   "scripts": {
     "dev": "vite & nodemon ./server/server.js",
     "build": "vite build",
-    "serve": "vite preview",
+    "serve": "node server/server.js & vite preview",
     "server": "nodemon",
     "test": "jest --testPathPattern tests/server",
     "vite-test": "vite-jest",
-    "vitest": "vitest --dir tests/react"
+    "vitest": "vitest --dir tests/react",
+    "start": "node server/server.js"
   },
   "dependencies": {
     "@react-spring/web": "^9.7.3",
@@ -29,7 +31,9 @@
     "jsonwebtoken": "^9.0.2",
     "mongodb": "^6.5.0",
     "mongoose": "^8.3.1",
+    "morgan": "^1.10.0",
     "openai": "^4.33.1",
+    "pexels": "^1.4.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^5.1.0",

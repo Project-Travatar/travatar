@@ -31,7 +31,7 @@ const Page6 = () => {
   const handleClick = async () => {
     setLoading(true);
     try {
-      console.log('data sent to back end server to make API request', ' data:', formData);
+      // console.log('data sent to back end server to make API request', ' data:', formData);
       const response = await fetch('/api/trip/build', {
         method: 'POST',
         headers: {
@@ -43,10 +43,12 @@ const Page6 = () => {
       
       const parsedData = await response.json();
       const itinerary = await JSON.parse(parsedData.trip).itinerary;
+      // console.log('parsed data:', parsedData.trip);
+      // console.log('itin:', itinerary);
       if (response.ok) {
         dispatch(updateItinerary(itinerary));
         dispatch(updateId(parsedData._id))
-        console.log('page6 serv res', parsedData);
+        // console.log('page6 serv res', parsedData);
         navigate('/itinerary');
         setLoading(false);
       } else {

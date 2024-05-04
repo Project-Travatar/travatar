@@ -2,35 +2,48 @@ import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { updateItinerary } from "../reducers/itineraryReducer";
 import { Link, useNavigate } from 'react-router-dom';
+import { updateId, updateDestination } from "../reducers/tripReducer";
 
 const Manager = () => {
-  const [itineraries, setItineraries] = useState([]);
+  const [ itineraries, setItineraries ] = useState([]);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { user } = useSelector((state) => state.user)
+  
+  // Function to get cookie value by name
+  const getCookie = (name) => {
+    const cookies = document.cookie.split(';');
+    for (let cookie of cookies) {
+      const [cookieName, cookieValue] = cookie.trim().split('=');
+      if (cookieName === name) {
+        return decodeURIComponent(cookieValue);
+      }
+    }
+    return null;
+  };
 
   // Retrieve all itineraries associated with the user and update state
   useEffect(() => {
-    try {
-      const getItineraryList = async () => {
-        let itineraryList = await fetch('api/trip/retrieve', {
-          method: 'GET',
+    const fetchData = async () => {
+      try {
+        const authToken = getCookie('authToken');
+        const token = authToken ? authToken : localStorage.getItem('userToken');  
+        const response = await fetch('api/trip/retrieve', {
+            method: 'POST',
             headers: {
-              'Authorization': `Bearer ${localStorage.getItem('userToken')}`,
+              'Authorization': `Bearer ${token}`,
+              'Content-Type': 'application/json',
             },
-        });
-  
-        itineraryList = await itineraryList.json();
-  
-        console.log(itineraryList);
-        setItineraries(itineraryList);
-  
+            body: JSON.stringify({ user }),
+          });
+          const itineraryList = await response.json();
+          setItineraries(itineraryList);
+        } catch (error) {
+        console.error('Error with request:', error);
       }
-      getItineraryList();   
-    } catch (error) {
-      console.error('Error with request:', error);
-    }
-    
-  }, []);
+    };
+    fetchData();
+  }, [user]);
 
   const deleteItinerary = async (e) => {
     const tripId = e.target.parentNode.parentNode.id;
@@ -41,7 +54,7 @@ const Manager = () => {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${localStorage.getItem('userToken')}`,
         },
-        body: JSON.stringify({ tripId: tripId }),
+        body: JSON.stringify({ tripId: tripId, user: user }),
       });
 
       remainingTrips = await remainingTrips.json();
@@ -58,14 +71,18 @@ const Manager = () => {
     const tripId = e.target.parentNode.parentNode.id;
 
     try {
-      let itineraryList = await fetch('api/trip/retrieve', {
-        method: 'GET',
+      const authToken = getCookie('authToken');
+      const token = authToken ? authToken : localStorage.getItem('userToken');  
+      const response = await fetch('api/trip/retrieve', {
+        method: 'POST',
           headers: {
-            'Authorization': `Bearer ${localStorage.getItem('userToken')}`,
-          },
-      });
-
-      itineraryList = await itineraryList.json();
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ tripId: tripId, user: user }),
+          });
+      // console.log(response);
+      const itineraryList = await response.json();
 
       // console.log(itineraryList);
 
@@ -75,10 +92,12 @@ const Manager = () => {
         // console.log("Parse ID:", trip.tripId, "| Target ID:", tripId)
         if (trip._id === tripId) {
           foundTrip = JSON.parse(trip.trip);
+          dispatch(updateId(trip._id));
+          dispatch(updateDestination(trip.destination));
           break;
         }
       }
-      console.log("See Details of:", foundTrip);
+      // console.log("See Details of:", foundTrip);
       if (foundTrip) {
         dispatch(updateItinerary(foundTrip.itinerary));
         navigate('/itinerary');
@@ -90,22 +109,32 @@ const Manager = () => {
   };
 
   const itineraryList = [...itineraries];
+  
+  // console.log(itineraryList);
+
   const renderList = itineraryList.map((itinerary) => {
-    return (<div className='trip-tile' key={itinerary._id} id={itinerary._id}>
-      <h3>{itinerary.destination}</h3>
-      <p>From: <b>{itinerary.startDate}</b></p>
-      <p>To: <b>{itinerary.endDate}</b></p>
-      <p>Created on: <b>{new Date(itinerary.createdAt).toLocaleString()}</b></p>
+
+      return <div className='trip-tile' key={itinerary._id} id={itinerary._id}>
+        <h3>{itinerary.destination}</h3>
+        <p>From: <b>{itinerary.startDate}</b></p>
+        <p>To: <b>{itinerary.endDate}</b></p>
+        <p>Created on: <b>{new Date(itinerary.createdAt).toLocaleString()}</b></p>
+
       <div className="tile-buttons"><button onClick={ seeDetails }>See Details</button><button onClick={ deleteItinerary }>Delete</button></div>
-    </div>)
-  })
+    </div>})
+
   // state: { itinerary: { itinerary: itinerary.trip }}
   // to={{ pathname: '/other', state: dataToPass }}
   
 
   return (<div>
-    <h2>Itinerary Manager</h2>
-    <div id='itinerary-grid'>{renderList}</div>
+    <h2>Welcome {user.firstName}</h2>
+    {renderList.length !==0 ?
+    <> 
+      <h2>Your trips:</h2>
+      <div id='itinerary-grid'>{renderList}</div>
+    </>
+    : <><br/> <p>Plan your first trip, what are you waiting for?!</p></>}
   </div>)
 }
 

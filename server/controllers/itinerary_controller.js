@@ -29,8 +29,9 @@ const tripController = {
     const { destination, startDate, endDate, activities, budget, travelers, groupDescription } = req.body;
     res.locals.tripName = `${destination} from ${startDate} to ${endDate}`;
     // Update prompt below to reflect req.body information - DONE (J.H.)
-    const prompt = `Make an itinerary for a trip for ${travelers} to ${destination} from ${startDate} until ${endDate}. I have a budget of ${budget}. Include the following types of attractions: ${activities.join(', ')} for a ${groupDescription}. Organize the itinerary by the following times of day: morning, afternoon, and evening. Recommend specific places of interest with their address. Limit cross-city commutes by grouping places of interest by geography for each day. Output the response in json format following this schema:
+    const prompt = `Make an itinerary for a trip for ${travelers} to ${destination} from ${startDate} until ${endDate}. I have a budget of ${budget}. Include the following types of attractions: ${activities.join(', ')} for a ${groupDescription}. Organize the itinerary by the following times of day: Morning, Afternoon, and Evening. Recommend specific places of interest with their address. Limit cross-city commutes by grouping places of interest by geography for each day. The 'title' property should contain a descriptive title specific to this itinerary, which should be unique even with the same search criteria (nothing vague like "solo traveler in vegas" or "romatic getaway in boston"). Output the response in json format following this schema:
     // {
+    //   title: string,  
     //   itinerary: {
     //     date: {
     //       time of day: {
@@ -55,8 +56,11 @@ const tripController = {
         response_format: { type: "json_object" },
       });
       
-      // console.log(completion.choices[0]);
-      res.locals.itinerary = JSON.parse(completion.choices[0].message.content);
+      // console.log('open itin:', completion.choices[0]);
+      const itin = JSON.parse(completion.choices[0].message.content)
+      res.locals.itinerary = itin;
+      res.locals.title = itin.title; 
+      
       return next();
     } catch (err) {
       console.log(err);
@@ -69,6 +73,7 @@ const tripController = {
     console.log('itinerary created!!!')
     Itinerary.create({
       // email: req.body.email,
+      title: res.locals.title,
       user: req.user._id,
       tripName: res.locals.tripName,
       destination: req.body.destination,
@@ -117,7 +122,7 @@ const tripController = {
     const { newActivity, timeOfDay, date, itineraryId, destination } = req.body;
     
     // Update prompt below to reflect req.body information - DONE (J.H.)
-    const prompt = `Recommend a place of interest for ${newActivity} at ${timeOfDay} on the ${date} with its address in ${destination}. Output the response in json format following this schema:
+    const prompt = `Recommend a place of interest for ${newActivity} at ${timeOfDay} on the ${date} located in ${destination}. Output the response in json format following this schema:
     // {
     //  date: {
     //    time of day: {
@@ -169,6 +174,8 @@ const tripController = {
 
   async updateTrip(req, res, next) {
     const itineraryId = req.body.itineraryId;
+    // console.log('itinerary id:', itineraryId)
+    console.log(req.body);
     const { date, timeOfDay} = req.body;
     //-----------------------------------------------------------------------
 
@@ -225,11 +232,12 @@ const tripController = {
       })
   },
 
-  // retrieveAll - To retrieve all trips saved for a specific user
-  retrieveAll(req, res, next) {
+  // retrieveUserItineraries - To retrieve all trips saved for a specific user
+  retrieveUserItineraries(req, res, next) {
+    const userId = req.body.user._id;
     Itinerary.find({
-      "email": req.body.email,
-    })
+      user: userId,
+    }).populate('user')
       .then (result => {
         // console.log(result);
         res.locals.allTrips = result;
@@ -237,7 +245,7 @@ const tripController = {
         return next();
       })
       .catch (err => {
-        console.log("could not retrieve all trips - retrieveAllTrips middleware");
+        console.log(`could not retrieve trips for user ${userId} - retrieveAllTrips middleware`);
         console.error("retrieveAllTrips ERROR =>", err);
       })
   },
