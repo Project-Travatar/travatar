@@ -13,7 +13,10 @@
     border-width: 4px;
     border-color: rgb(4, 153, 153);
 } */
-
+body {
+    overflow: auto;
+    background-color: #0f1b42;
+}
 
 .activities, .groups {
     display: flex;
@@ -51,11 +54,9 @@ input.trip-details-input {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 91vh;
+    height: 88vh;
     width: 100vw;
-    background-color: #0f1b42
 }
-
 
 .activity-card {
     display: flex;
@@ -155,31 +156,69 @@ input[type='checkbox'], input[type='radio'] {
     text-decoration: underline;
 }
 
+#itinerary-page {
+   /* background-color: #0f1b42; */
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   color: white;
+   min-height: 100vh;
+   width: 99vw;
+}
+
 #itinerary-details {
-    margin-left: 20px;
+    
 }
 
 .date {
     font-weight: bold;
-    text-decoration: underline;
+    align-self: center;
+
 }
 
 .day-entry {
     margin-left: 10px;
-    margin-bottom: 20px;
+    margin-top: 20px;
+    padding-bottom: 20px;
+    display: flex;
+    border-bottom: 2px solid;
+    border-bottom-color: #95a3c1;
 }
 
 .day-details {
     margin-left: 10px;
+    display: flex;
 }
 
 .time-of-day {
     font-weight: bold;
+    text-align: center;
 }
 
 .activity-details {
     margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+    width: 20vw;
+    background-color:  #333f68;
+    padding: 20px;
+    border-radius: 20px;
 }
+
+.activity-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.activity, .description {
+    display: inline;
+}
+
+.address {
+    margin-bottom: 3px;
+}
+
 
 .login-container {
     border: black;

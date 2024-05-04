@@ -5,9 +5,9 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import setupStore from "../../client/store";
 
 
-export default function renderMaster(Component){
+export default function renderMaster(Component, initialState){
   return render(
-    <Provider store={setupStore()}>
+    <Provider store={setupStore(initialState)}>
       <Router>
         <Routes>
           <Route path="/" element={<Component />} />

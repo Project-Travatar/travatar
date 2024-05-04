@@ -4,3 +4,5 @@ node_modules
 gitpush.zsh
 dist
 .env
+env
+config.env

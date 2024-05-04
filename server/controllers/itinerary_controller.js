@@ -4,8 +4,7 @@ const { Configuration, OpenAI } = require('openai');
 const express = require('express');
 const app = express();
 const Itinerary = require('../models/Itinerary');
-const { recompileSchema } = require('../models/User');
-const dotenv = require('dotenv');
+// const { recompileSchema } = require('../models/User');
 
 const openai = new OpenAI({ apiKey: process.env.VITE_OPEN_AI_API_KEY });
 
@@ -119,6 +118,7 @@ const tripController = {
   */
   async updateTripActivities(req, res, next) {
     console.log("updateTripActivities invoked");
+    console.log('req.body:', req.body);
     const { newActivity, timeOfDay, date, itineraryId, destination } = req.body;
     
     // Update prompt below to reflect req.body information - DONE (J.H.)
@@ -145,7 +145,7 @@ const tripController = {
         response_format: { type: "json_object" },
       });
       
-      console.log(completion.choices[0]);
+      console.log('completion.choices[0]', completion.choices[0]);
       res.locals.updatedActivity = JSON.parse(completion.choices[0].message.content);
 
       //console.log('AI response for updating an activity: ', res.locals.updatedActivity)
@@ -174,6 +174,8 @@ const tripController = {
 
   async updateTrip(req, res, next) {
     const itineraryId = req.body.itineraryId;
+    // console.log('itinerary id:', itineraryId)
+    console.log(req.body);
     const { date, timeOfDay} = req.body;
     //-----------------------------------------------------------------------
 
@@ -230,11 +232,12 @@ const tripController = {
       })
   },
 
-  // retrieveAll - To retrieve all trips saved for a specific user
-  retrieveAll(req, res, next) {
+  // retrieveUserItineraries - To retrieve all trips saved for a specific user
+  retrieveUserItineraries(req, res, next) {
+    const userId = req.body.user._id;
     Itinerary.find({
-      "email": req.body.email,
-    })
+      user: userId,
+    }).populate('user')
       .then (result => {
         // console.log(result);
         res.locals.allTrips = result;
@@ -242,7 +245,7 @@ const tripController = {
         return next();
       })
       .catch (err => {
-        console.log("could not retrieve all trips - retrieveAllTrips middleware");
+        console.log(`could not retrieve trips for user ${userId} - retrieveAllTrips middleware`);
         console.error("retrieveAllTrips ERROR =>", err);
       })
   },

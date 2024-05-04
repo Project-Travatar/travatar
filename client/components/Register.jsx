@@ -65,7 +65,7 @@ const Register = () => {
           Password:
         </label>
           <input type="password" value={password} placeholder="Enter your password" className="inline-block input-field rounded-md border-0 py-1 px-3 text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-400 mb-8 flex-grow" onChange={(e) => setPassword(e.target.value)} />
-        <button type="submit" className="block text-white border border-blue-500 bg-blue-500 hover:bg-blue-600 bg-opacity-90 hover:text-slate-400 rounded-md py-2 ml-auto rounded-full px-8">Register</button>
+        <button title='submit button' type="submit" className="block text-white border border-blue-500 bg-blue-500 hover:bg-blue-600 bg-opacity-90 hover:text-slate-400 rounded-md py-2 ml-auto rounded-full px-8">Register</button>
       </div>
       </form>
       </div>

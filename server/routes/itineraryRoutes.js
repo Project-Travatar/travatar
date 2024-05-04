@@ -10,16 +10,16 @@ router.post('/build', (req, res, next)=>{
   res.status(201).send(res.locals.itinerary);
 });
 
-router.post('/update', authController.protect, tripController.updateTripActivities, tripController.updateTrip, (req, res) => {
+router.put('/update', authController.protect, tripController.updateTripActivities, tripController.updateTrip, (req, res) => {
   res.status(200).send(res.locals.updatedActivity);
 });
 
-router.get('/retrieve', authController.protect, tripController.retrieveAll, (req, res) => {
+router.post('/retrieve', authController.protect, tripController.retrieveUserItineraries, (req, res) => {
   // console.log(res.locals.allTrips[0]._id);
   res.status(200).json(res.locals.allTrips);
 });
 
-router.delete('/delete', authController.protect, tripController.deleteTrip, tripController.retrieveAll, (req, res) => {
+router.delete('/delete', authController.protect, tripController.deleteTrip, tripController.retrieveUserItineraries, (req, res) => {
   res.status(200).send(res.locals.allTrips);
 })
 
