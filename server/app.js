@@ -30,6 +30,9 @@ const port = 4173;
 //logging
 app.use(morgan('dev'));
 
+//logging
+app.use(morgan('dev'));
+
 app.use(express.json());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '../dist')));

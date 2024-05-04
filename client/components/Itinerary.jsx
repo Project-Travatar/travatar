@@ -1,9 +1,11 @@
 import Reroll from './Reroll.jsx';
 import { createClient } from 'pexels';
+
 // require('react');
 
 const Itinerary = ({ itinerary }) => {
   console.log('jsx itin:', itinerary);
+
   document.backgroundDiv = 0;
   const client = createClient('PEgQiisiCDMXUtU68bsOrQ6YvizFI0M1uhqWesivRNHbIOxdqtlEIRX2');
   console.log('itinirary: ', JSON.stringify(itinerary));
