@@ -116,6 +116,7 @@ const Manager = () => {
 
       return <div className='trip-tile' key={itinerary._id} id={itinerary._id}>
         <h3 className="text-center font-bold mb-2 pb-px border-b-2 border-white">{itinerary.destination}</h3>
+        <h2 className='underline'>{itinerary.title}</h2>
         <p>From: <b>{itinerary.startDate}</b></p>
         <p>To: <b>{itinerary.endDate}</b></p>
         <p>Created on: <b>{new Date(itinerary.createdAt).toLocaleString()}</b></p>
