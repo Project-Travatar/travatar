@@ -3,4 +3,6 @@ node_modules
 .vscode
 gitpush.zsh
 dist
+.env
+env
 config.env

@@ -7,18 +7,21 @@
   "author": "Team Axolotl",
   "license": "MIT",
   "private": false,
+
   "scripts": {
     "dev": "vite & nodemon ./server/server.js",
     "build": "vite build",
-    "serve": "vite preview",
+    "serve": "node server/server.js & vite preview",
     "server": "nodemon",
     "test": "jest --testPathPattern tests/server",
     "vite-test": "vite-jest",
-    "vitest": "vitest --dir tests/react"
+    "vitest": "vitest --dir tests/react",
+    "start": "node server/server.js"
   },
   "dependencies": {
     "@react-spring/web": "^9.7.3",
     "@reduxjs/toolkit": "^2.2.2",
+    "@testing-library/user-event": "^14.5.2",
     "autoprefixer": "^10.4.19",
     "bcryptjs": "^2.4.3",
     "cookie-parser": "^1.4.6",

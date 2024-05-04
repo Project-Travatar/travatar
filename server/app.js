@@ -25,24 +25,30 @@ connectDB();
 // const tripController = require('./controllers/itinerary_controller');
 
 const app = express();
-const port = 3000;
+const port = 4173;
+
+//logging
+app.use(morgan('dev'));
 
 //logging
 app.use(morgan('dev'));
 
 app.use(express.json());
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'client')));
+app.use(express.static(path.join(__dirname, '../dist')));
 app.use(express.urlencoded({ extended: true })); //parse urlencoded bodies
+app.get('/', (req, res) => {
+  return res.status(200).sendFile(path.join(__dirname, '../dist/index.html'))
+});
 
 app.use('/api/users', require('./routes/userRoutes'));
 app.use('/api/trip', require('./routes/itineraryRoutes'));
 app.use('/api/auth/google', require('./routes/googleOAuthRoutes'));
 
 
-app.get('/', function (req, res) {
-  res.sendFile(path.join(__dirname,'../index.html'))
-})
+// app.get('/', function (req, res) {
+//   res.sendFile(path.join(__dirname,'../index.html'))
+// })
 
 
 
